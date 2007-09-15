@@ -1,58 +1,111 @@
-OpenThesaurus - Deutscher Thesaurus - Version für OpenOffice.org
-Copyright (C) 2003-2006 Daniel Naber (naber at danielnaber de)
-Snapshot, automatisch generiert #YYYY-MM-DD# #HH:MM#, Sprache: #LANG#
-Homepage: http://www.openthesaurus.de
+OpenThesaurus - Tesauro Español - Versión para OpenOffice.org
+Marcelo Garrone (mgarrone at users.sf.net)
+Snapshot, generado automáticamente: #YYYY-MM-DD# #HH:MM#
+Homepage: http://openoffice-es.sf.net/thesaurus/
 
-Voraussetzungen: ==========================================================
+Requisitos: ==========================================================
 
- OpenOffice.org 2.0 beta oder neuer
-
-Manuelle Installation: ====================================================
-
- 1. th_de_DE_v2.dat und th_de_DE_v2.idx in folgendes Verzeichnis
-    kopieren:
-    OpenOffice.org/share/dict/ooo/
-    Wo genau dieses Vereichnis liegt, hängt von der Installation ab.
-    Unter Linux liegt es oft unter /usr/local oder /opt, unter Windows
-    unter C:\Programme oder C:\Program Files.
-
- 2. In die Datei OpenOffice.org/share/dict/ooo/dictionary.lst
-    folgende Zeile eingefügen:
-    THES de DE th_de_DE_v2
-
- 3. OOo neu starten (auch den Schnellstarter, falls man den benutzt)
-
- 4. Im Text ein Wort markieren oder einfach den Cursor auf das Wort
-    setzen und Extras->Sprache->Thesaurus auswählen. Sollten keine Synonyme 
-    angezeigt werden, kann man es mit dem Wort "Test" versuchen. Es werden 
-    nur Grundformen gefunden, z.B. "groß" aber nicht "größer", "laufen" aber
-    nicht "lief".
-
-Sollte etwas nicht funktionieren, bitte beachten: Während der Installation 
-von  OpenOffice.org muss unter unter "Optionale Komponenten" das
-"Englische (US) Sprachmodul" installiert worden sein. Ohne dieses Modul 
-ist auch der deutsche  Thesaurus nicht funktionsfähig.
-
-Wer Fehler im Thesaurus findet oder Wörter vermisst, kann sich unter
-http://www.openthesaurus.de anmelden und dort Fehler beheben und 
-neue Wörter einfügen.
+ OpenOffice.org 2.0beta o superior 
 
 
-This library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 2.1 of the License, or (at your option) any later version.
+Nota: ================================================================
+    
+    * Se asume que OOo está bien instalado.
+    * El diccionario de sinónimos es el mismo para Windows como para Linux.
 
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Lesser General Public License for more details.
+Instalación: =========================================================
 
-You should have received a copy of the GNU Lesser General Public
-License along with this library; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ 1. Al descomprimir el archivo thesaurus***.zip se habrá encontrado con cuatro
+    archivos: README (el que está leyendo), COPYING, th_es_ES_v2.dat y th_es_ES_v2.idx.
+    
+    Ahora deberá copiar th_es_ES_v2.dat y th_es_ES_v2.idx a:
+    
+    WINDOWS:
+    c:\[OpenOffice.orgxx]\user\wordbook\
+    ó
+    c:\[OpenOffice.orgxx]\share\dict\ooo\
+    
+    
+    LINUX:
+    [OpenOffice.orgxx]/share/dict/ooo/
+    ó
+    [OpenOffice.orgxx]/user/wordbook/
+    
+    Si se encuentra con la intriga en dónde es que OpenOffice busca el diccionario de
+    sinónimos, como los ortográficos y de separación silábicas, realice lo siguiente:
+    
+    Vaya al menú Herramientas -> Opciones -> OpenOffice.org -> Rutas 
+    
+    Primero fíjese en "Lingüística" y luego en "Diccionario de usuario" (si está instalado
+    OpenOffice para varios usuarios).
+    
+    Entonces encontró la Ruta exacta para copiar los dos archivos.
+    
+ 2. En el mismo directorio EDITE o CREE el archivo "dictionary.lst"
+    
+    Tienes que agregar:
+    
+    THES es ES th_es_ES_v2
+    
+    Un archivo dictionary.lst completo y de ejemplo podría ser:
+    
+     # *cortar aquí **********************************************************
+    
+     # Lista de los diccionarios que se cargarán en OpenOffice
+     # ---------------------------------------------------
+     # FORMATO:
+     # HYPH es UY hyph_es_UY
+     #   |   | |     |
+     #   |   | |     Nombre del archivo(s) "es_ES" ó "hyph_es" ó "th_es_ES 
+     #   |   | |     (no agregar extención del nombre)
+     #   |   | |
+     #   |   | Código del País o Región "ES" ó "US" ó "DE"
+     #   |   |  
+     #   |   Código del Idioma "es" ó "en" ó "de"
+     #   |   
+     #   "DICT" dicc. ortográfico, 
+     #   "HYPH" dicc. de separación silábica,
+     #   "THES" diccionario de sinónimos.   
 
-Lizenz: ===================================================================
+     HYPH es ES hyph_es_ES
+     DICT es ES es_ES
+     THES es ES th_es_ES_v2
+     
+     # *cortar aquí **********************************************************
+
+
+ 3. Reiniciar OpenOffice.org (o sea cerrar todos los programas de OOo que
+    tenga abierto incluyendo, si estás en WIN32, el iniciador rápido 
+    (Quickstarter) en la bandeja, y abrir todo de nuevo)
+
+ 4. En Openoffice.org Write vaya al menú:
+    Herramientas -> Opciones -> Configuración del Idioma -> Lingüística
+    Cuando haya llegado a "Lingüística" tiene que seleccionar [x]
+    "OpenOffice.org Thesaurus".
+    
+    Si no funciona
+    -------------- 
+    No olvide que tiene que ir a:
+    Herramientas -> Opciones -> Configuración del Idioma -> Idioma
+    y seleccionar [x] "Español (España)".
+    O si corresponde a, por ejemplo, Español (Uruguay), es RECOMENDABLE
+    cambiar todo desde Idiomas hasta Lingüística al español regional 
+    que está usando, como también los archivos:
+    
+    th_es_ES_v2.dat > th_es_UY_v2.dat
+    th_es_ES_v2.idx >  y th_es_UY_v2.idx 
+    
+    sin olvidar el archivo dictionary.lst, por ejemplo: 
+    
+    THES es ES th_es_ES_v2 > THES es UY th_es_UY_v2
+    
+ 5. Test:
+    En OpenOffice Write escribir, por ejemplo, "fealdad" y luego ir
+    al menú: Herramientas -> Diccionario de Sinónimos. Aquí aparecerá
+    una ventana con los posibles sinónimos.
+    (CTRL-F7 en mi OOo 1.1 no funciona)
+
+licencia: =========================================================
 
 		  GNU LESSER GENERAL PUBLIC LICENSE
 		       Version 2.1, February 1999
@@ -555,4 +608,4 @@ necessary.  Here is a sample; alter the names:
   <signature of Ty Coon>, 1 April 1990
   Ty Coon, President of Vice
 
-That's all there is to it!
+That's all there is to it! 

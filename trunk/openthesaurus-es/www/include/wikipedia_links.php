@@ -35,7 +35,7 @@ if( $queryterm != "" ) {
 		$matches++;
 	}
 	if ($matches == 0) {
-		print _("No matches");
+		print T_("No matches");
 	} else {
 	?>
 	<li class="wiktionarylicense">Quelle: <a class="wikilicenselink"

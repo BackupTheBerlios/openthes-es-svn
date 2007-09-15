@@ -12,7 +12,7 @@ if( $queryterm != "" ) {
 	}
 }
 if( sizeof($links) > 0 ) { ?>
-	<p class="compact"><strong><?php print _("Grammatically related words (base forms):"); ?></strong></p>
+	<p class="compact"><strong><?php print T_("Grammatically related words (base forms):"); ?></strong></p>
 	<ul class="compact">
 		<?php foreach( $links as $link ) { ?>
 			<li><?php print $link ?></li>

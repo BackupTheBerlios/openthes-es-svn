@@ -34,22 +34,30 @@ require($_PHPLIB["libdir"] . "local.inc");     /* Required, contains your local 
 
 require($_PHPLIB["libdir"] . "page.inc");      /* Required, contains the page management functions. */
 
+// define(PROJECT_DIR, realpath('./'));
+// define(LOCALE_DIR, PROJECT_DIR .'../locale');
+// define(DEFAULT_LOCALE, 'es_ES');
+require($_PHPLIB["libdir"] . 'gettext.inc');
+
 // dnaber:
 // WARNING: also see include/top.php when you change something here:
 $langs = array();
 array_push($langs, WEB_LANG);		// first = default
+array_push($langs, "de_DE");
 array_push($langs, "en");
 
 if( isset($_COOKIE['thes_lang'])) {
 	$active_lang = $_COOKIE['thes_lang'];
-	setlocale(LC_ALL, $active_lang);
+	T_setlocale(LC_ALL, $active_lang);
 } else {
 	$active_lang = $langs[0];
-	setlocale(LC_ALL, $langs[0]);
+	T_setlocale(LC_ALL, $langs[0]);
 }
 
 #You might need to comment this in to make utf-8 work:
 #bind_textdomain_codeset('messages',"UTF-8");
-bindtextdomain('messages', '../include/locale');
-textdomain('messages');
+$domain = 'messages';
+T_bind_textdomain_codeset($domain, $htmlcharset);
+T_bindtextdomain($domain,LOCALE_DIR);
+T_textdomain($domain);
 ?>

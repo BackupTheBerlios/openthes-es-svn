@@ -1,4 +1,4 @@
-<p class="compact"><strong><?php print _("Spellcheck suggestions:") ?></strong> (Falsche Vorschl&auml;ge? <a href="faq.php#spellcheck">Siehe FAQ</a>)</p>
+<p class="compact"><strong><?php print T_("Spellcheck suggestions:") ?></strong> (Falsche Vorschl&auml;ge? <a href="faq.php#spellcheck">Siehe FAQ</a>)</p>
 
 <table cellspacing="0" cellpadding="0">
 <tr>
@@ -43,7 +43,7 @@ foreach ($arr as $subArray) {
 		#	print "<li>$term</li>";
 		#} else {
 		if ($term == NO_SPELL_SUGGESTION) {
-			print "<li>"._("unknown word, no similar words found")."</li>";
+			print "<li>".T_("unknown word, no similar words found")."</li>";
 		} else {
 			print "<li><a href=\"".DEFAULT_SEARCH."?word=".urlencode($term)."\">$term</a></li>";
 		}
@@ -59,7 +59,7 @@ foreach ($arr as $subArray) {
 	}
 }  
 if ($misspelled_words == 0) {
-	print _("<li>Word is spelled correctly</li>");
+	print T_("<li>Word is spelled correctly</li>");
 }
 ?>
 </ul>

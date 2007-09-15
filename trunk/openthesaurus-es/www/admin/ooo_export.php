@@ -1,22 +1,22 @@
 <?php
 
-if( ! (getenv('REMOTE_ADDR') == getenv('SERVER_ADDR')) ) {
-	print "Access from your host is denied.";
-	return;
-}
+// if( ! (getenv('REMOTE_ADDR') == getenv('SERVER_ADDR')) ) {
+// 	print "Access from your host is denied.";
+// 	return;
+// }
 
 #### Configuration ###
-$lang = "de_DE";
+$lang = "es_ES";
 
-include("../../include/phplib/prepend.php3");
+include("../include/phplib/prepend.php3");
 $db = new DB_Thesaurus;
 $db_temp = new DB_Thesaurus;
-include("../../include/tool.php");
+include("../include/tool.php");
 
 # NOTE: requires an index on word_meanings.meaning_id, otherwise it's slow!!
 
 $title = "OpenThesaurus admin interface: Build OOo 1.x thesaurus files";
-include("../../include/top.php");
+include("../include/top.php");
 
 $wordfile = "wordlist.txt";
 $thesfile = "trimthes.txt";
@@ -207,20 +207,20 @@ if( ! $readme_fh ) {
 fwrite($readme_fh, $readme);
 fclose($readme_fh);
 
-print "Calling ZIP...<br>\n";
+print "Calling BZIP2...<br>\n";
 print "<pre>";
-$target = "download/OOo-Thesaurus-snapshot.zip";
-$zip = "cd .. && /usr/bin/zip $target OOo-Thesaurus/th_".$lang.".* OOo-Thesaurus/README_th_".$lang.".txt";
-print "$zip\n";
+$target = TARGET_OOO;
+$bzip2 = "cd ../OOo-Thesaurus && /bin/tar -cjf $target th_".$lang.".* README_th_".$lang.".txt COPYING && mv $target ../download/";
+print "$bzip2\n";
 
-if( ! system($zip) ) {
-	print "Error executing zip\n";
+if( ! system($bzip2) ) {
+	print "Error executing bzip2\n";
 	return;
 }
 
 print "</pre>";
 
-print "<p>ZIP saved as <a href=\"../$target\">OOo-Thesaurus.zip</a></p>";
+print "<p>ZIP saved as <a href=\"../download/$target\">" . TARGET_OOO . "</a></p>";
 
 print "<hr>";
 

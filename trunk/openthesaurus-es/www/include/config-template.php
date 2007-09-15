@@ -6,18 +6,19 @@ $htmlcharset = "iso-8859-1"; # set HTTP charset
 
 # local:
 $_PHPLIB = array();
-$_PHPLIB["libdir"] = "/home/httpd/html/ro.openoffice/thesaurus/include/phplib/"; 
+$_PHPLIB["libdir"] = "/home/groups/openthes-es/htdocs/include/phplib/";
 
 define('BASE_URL', "");               # no trailing slash, "" if the site is in the root
 
 if (!defined('ADMIN_IP'))
 {
-define('DB_HOST', "localhost");
-define('DB_NAME', "thesaurus");
-define('DB_USER', "apache");
+define('DB_HOST', "db.berlios.de");
+define('DB_NAME', "opentheses");
+define('DB_USER', "opentheses");
 define('DB_PASSWORD', "");
+define('LOCALE_DIR', "/home/groups/openthes-es/htdocs/include/locale");
 # the server this script runs on:
-define('ADMIN_IP', "123.123.123.123");
+#define('ADMIN_IP', "123.123.123.123");
 
 # Speeds up similarity and substring search by using an in-memory
 # database.
@@ -41,13 +42,13 @@ define('TIMEFORMAT', "Y-m-d H:i");		# used for statistics
 define('TIMEFORMAT_SHORT', "Y-m-d");	# used for download file dates
 
 # for suggestp.php:
-define('SUGGEST_EMAIL', "fixme@fixme");
+define('SUGGEST_EMAIL', "marcelo.garrone@gmail.com");
 define('SUGGEST_SUBJECT', "OpenThesaurus web form");
 
 # People can join a mailing list when they register at this site.
 # Send the "subscribe" email to this address (set to '' to disable 
 # this feature):
-define('MAILING_LIST_SUBSCRIBE','unconfigured-request@unconfigured');
+define('MAILING_LIST_SUBSCRIBE','openthes-es-general-request@lists.berlios.de');
 
 # Offer users to set superordinate and subordinate concepts?
 define('ONTOLOGY', 1);
@@ -84,26 +85,29 @@ define('REALTIME_STATS_UPDATE', 1);
 define('ADMIN_DELETE_COMMENT', 1);
 
 # Language of the web pages (requires translation files in include/locale/...):
-define('WEB_LANG', "de_DE");
+define('WEB_LANG', "es_ES");
 
 # Thesaurus language (not the web pages):
-define('LANGUAGE', 'German');
+define('LANGUAGE', 'Spanish');
 
 # Information about the administrator:
-define('EMAIL', 'unconfigured@unconfigured.org');	# displayed in bottom.php
-define('DOMAIN', 'unconfigured.org');
-define('HOMEPAGE', "http://www.unconfigured.org/");
+define('EMAIL', 'marcelo.garrone@gmail.com');	# displayed in bottom.php
+define('DOMAIN', 'openthes-es.berlios.de');
+define('HOMEPAGE', "http://openthes-es.berlios.de");
 # Copyright of the data:
-define('COPYRIGHT',"Copyright (C) 2006 Unconfigured <unconfigured@unconfigured.org>");
+define('COPYRIGHT',"Copyleft (C) 2007 Marcelo Garrone <marcelo.garrone@gmail.com>");
 
-define('TARGET_KWORD', "kword_thesaurus.txt");
-define('TARGET_TEXT', "thesaurus.txt");
-define('TARGET_OOO', "OOo-Thesaurus-snapshot.zip");
-define('TARGET_OOO2', "thes_de_DE_v2.zip");
+define('TARGET_DOWNLOAD', "download/");
+define('TARGET_DOWNLOAD_DIR', "download/");
+define('TARGET_KWORD', "Kword_thesaurus_es_ES.txt");
+define('TARGET_TEXT', "Thesaurus_es_ES.txt");
+define('TARGET_OOO', "OOo-thes_es_ES.zip");
+define('TARGET_OOO2', "OOo2-thes_es_ES.zip");
+define('TARGET_SOURCE', "openthesaurus-es_src.tar.gz");
 
 define('HIDDEN_SYNSETS', "-1");
 
-define('KEYWORDS', "<meta name='keywords' content='thesaurus, synonyms' />");
+define('KEYWORDS', "<meta name='keywords' content='thesaurus, synonyms, tesauro, sinónimos, diccionario, español, castellano, openoffice' />");
 
 # Set to 1 if you want word_detail.php to be accessible
 # without being logged in. This is basically only useful if
@@ -126,10 +130,10 @@ define('SPELLCHECK_DICT_BASE',"/path/to/dict/de_DE");
 # Get the dumps at http://dumps.wikimedia.org:
 define('WIKTIONARY_XML', "/path/to/dewiktionary-latest-pages-articles.xml");
 # Only Wiktionary entries with this string will be imported:
-define('WIKTIONARY_LANG', "Sprache|Deutsch");
+define('WIKTIONARY_LANG', "Spanish");
 
 # set this to 1 to convert the texts written to the export files from utf8 to latin1:
-define('UTF8_DATABASE', 1);
+define('UTF8_DATABASE', 0);
 
 ### NOTE ###
 # Also see www/admin/ooo_export.php and www/admin/ooo_new_export.php for more options

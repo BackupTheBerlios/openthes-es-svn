@@ -1,13 +1,13 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 $cancel_login = 1;
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Default_Auth"));
-include("../include/tool.php");
+include("include/tool.php");
 $db = new DB_Thesaurus;
 
-$title = _("All words A-Z");
+$title = T_("All words A-Z");
 $stop_robots = 1;
-include("../include/top.php");
+include("include/top.php");
 ?>
 
 <br />
@@ -99,7 +99,7 @@ if ($subchar) {
 			$count++;
 		}
 		if ($count == 0) {
-			print "<li>"._("No words found starting with these characters")."</li>";
+			print "<li>".T_("No words found starting with these characters")."</li>";
 		}
 		if ($count < 60) {
 			# avoid right column getting too wide
@@ -134,6 +134,6 @@ if ($subchar) {
 <br />
 
 <?php
-include("../include/bottom.php");
+include("include/bottom.php");
 page_close();
 ?>

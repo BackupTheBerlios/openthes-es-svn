@@ -6,7 +6,7 @@ $htmlcharset = "utf-8";
 include("../include/top.php");
 ?>
 
-<p><?php print _("You can use this form to suggest words without being logged in. These words will be checked before they are included in OpenThesaurus."); ?></p>
+<p><?php print T_("You can use this form to suggest words without being logged in. These words will be checked before they are included in OpenThesaurus."); ?></p>
 
 <form action="suggest.php" method="post">
 <?php if ( array_key_exists('word', $_GET) ) { ?>
@@ -17,7 +17,7 @@ include("../include/top.php");
 <?php } ?>
 <table border="0" bgcolor="#eeeeee" align="center" cellspacing="7" cellpadding="0">
 <tr>
-	<td valign="bottom"><?php print _("Synonyms (separated by comma):") ?></td>
+	<td valign="bottom"><?php print T_("Synonyms (separated by comma):") ?></td>
 	<td valign="bottom">
 			<input type="text" name="message" size="60" maxlength="100" />
 	</td>
@@ -26,7 +26,7 @@ include("../include/top.php");
 	<td></td>
 	<?php
 	# move outside quotes so we don't confuse i18n process:
-	$msg = _("Suggest Synonyms");
+	$msg = T_("Suggest Synonyms");
 	?>
 	<td align="right"><input type="submit" value="<?php print $msg ?>" /></td>
 </tr>
@@ -36,7 +36,7 @@ include("../include/top.php");
 <form action="<?php print $this->url() ?>" method="post" name="loginform">
 
 <p>
-<?php print _("You have to log in to directly add your corrections to our data. Don't have an account yet? <a href=\"register.php\"><strong>Sign up here.</strong></a>"); ?>
+<?php print T_("You have to log in to directly add your corrections to our data. Don't have an account yet? <a href=\"register.php\"><strong>Sign up here.</strong></a>"); ?>
 </p>
 <?php
 while( list($key, $val) = each($_POST) ) {
@@ -49,7 +49,7 @@ while( list($key, $val) = each($_POST) ) {
 
 <table border="0" bgcolor="#eeeeee" align="center" cellspacing="7" cellpadding="0">
 	<tr valign="top" align="left">
-		<td><?php print _("Username (email):") ?></td>
+		<td><?php print T_("Username (email):") ?></td>
 		<td align="right"><input type="text" name="username"
 			value="<?php 
 					if( isset($this->auth["uname"]) ) {
@@ -58,11 +58,11 @@ while( list($key, $val) = each($_POST) ) {
 			size="32" maxlength="64" /></td>
 	</tr>
 	<tr valign="top" align="left">
-		<td><?php print _("Password:") ?></td>
+		<td><?php print T_("Password:") ?></td>
 		<td align="right"><?php print "<input type=\"password\" name=\"password\" size=\"32\" maxlength=\"32\" />" ?></td>
 	</tr>
 	<tr>
-		<td align="right" colspan="2"><?php print _("Note: Cookies need to be enabled to log in") ?>
+		<td align="right" colspan="2"><?php print T_("Note: Cookies need to be enabled to log in") ?>
 			&nbsp; <?php print "<input type=\"submit\" name=\"submit\" value=\"Login\" />" ?></td>
 	</tr>
 </table>
@@ -76,9 +76,9 @@ if ( isset($_POST['username']) ) { ?>
 		<tr>
 			<td colspan="2">
 				<?php if( ! array_key_exists('Thesaurus_Session', $_COOKIE) ) { ?>
-					<?php print _("<p class=\"error\">Couldn't log in, please activate cookies.</p>") ?>
+					<?php print T_("<p class=\"error\">Couldn't log in, please activate cookies.</p>") ?>
 				<?php } else { ?>
-					<?php print _("<p class=\"error\">Invalid username or password.<br />Please note: Login requires cookies.</p>") ?>
+					<?php print T_("<p class=\"error\">Invalid username or password.<br />Please note: Login requires cookies.</p>") ?>
 				<?php } ?>
 			</td>
 		</tr>
@@ -86,7 +86,7 @@ if ( isset($_POST['username']) ) { ?>
 
 <?php } ?>
 
-<p><?php print _("Forgot your password? Just <a href=\"register.php\">register again</a> and the password will be emailed to you.") ?></p>
+<p><?php print T_("Forgot your password? Just <a href=\"register.php\">register again</a> and the password will be emailed to you.") ?></p>
 
 </form>
 

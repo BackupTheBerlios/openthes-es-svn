@@ -23,7 +23,7 @@ if( sizeof($matches) > 0 ) {
 	?>
 <?php 
 } else { ?>
-	<li><?php print _("No matches") ?></li>
+	<li><?php print T_("No matches") ?></li>
 <?php } ?>
 </ul>
 <!-- TIME for levenshtein: <?php print (getmicrotime()-$start) ?> -->

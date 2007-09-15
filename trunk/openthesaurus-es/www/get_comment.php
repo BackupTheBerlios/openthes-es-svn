@@ -1,13 +1,13 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Auth"));
 $auth->login_if($auth->auth["uid"] == "nobody");
-include("../include/tool.php");
+include("include/tool.php");
 $db = new DB_Thesaurus;
 $page = "get_delete_comment";
 
-$title = _("Comment on the deletion");
-include("../include/top.php");
+$title = T_("Comment on the deletion");
+include("include/top.php");
 ?>
 
 <form action="do_save.php" method="post" name="commentform">
@@ -16,16 +16,16 @@ include("../include/top.php");
 
 <table cellpadding="0" cellspacing="2" border="0">
 <tr>
-	<td colspan="2"><?php print sprintf(_("Please add a short comment that explains why the synset <span class='inp'>%s</span> can be deleted:"), join(', ', getSynset(uservar('meaning_id')))) ?></td>
+	<td colspan="2"><?php print sprintf(T_("Please add a short comment that explains why the synset <span class='inp'>%s</span> can be deleted:"), join(', ', getSynset(uservar('meaning_id')))) ?></td>
 </tr>
 <tr><td>&nbsp;</td></tr>
 <tr>
-	<td><?php print _("Short comment:") ?></td>
+	<td><?php print T_("Short comment:") ?></td>
 	<td><input size="50" type="text" name="comment" value="" /></td>
 </tr>
 <tr>
 	<td></td>
-	<td align="right"><?php print "<input type=\"submit\" value=\""._("Send")."\" />" ?></td>
+	<td align="right"><?php print "<input type=\"submit\" value=\"".T_("Send")."\" />" ?></td>
 </tr> 
 </table>
 
@@ -38,6 +38,6 @@ document.forms['commentform']['comment'].focus();
 </script>
 
 <?php
-include("../include/bottom.php");
+include("include/bottom.php");
 page_close();
 ?>

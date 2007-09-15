@@ -1,7 +1,7 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 $db = new DB_Thesaurus;
-include("../include/tool.php");
+include("include/tool.php");
 
 // just to be sure, check this here, too:
 if( ! emailOkay(uservar('email')) ) { 
@@ -21,12 +21,12 @@ if( $db->nf() == 0 ) {
 }
 $db->next_record();
 $pwd = $db->f('password');
-	
+
 $to = uservar('email');
 $from = "dontreply@" . DOMAIN;
-$subject = _("Password Reminder");
+$subject = T_("Password Reminder");
 $message = "\n".
-sprintf(_("Password reminder for %s"), HOMEPAGE)."\n\n".
+sprintf(T_("Password reminder for %s"), HOMEPAGE)."\n\n".
 _("Username: ").uservar('email')."\n".
 _("Password: ")."$pwd\n";
 
@@ -36,12 +36,12 @@ if( ! $ret ) {
 	return;
 }
 
-$title = _("Sending Password Reminder");
-include("../include/top.php");
+$title = T_("Sending Password Reminder");
+include("include/top.php");
 ?>
 
-<p><?php print _("A password reminder will soon be sent to your email address.") ?></p>
+<p><?php print T_("A password reminder will soon be sent to your email address.") ?></p>
 
-<p><a href="./"><?php print _("Back to homepage") ?></a></p>
+<p><a href="./"><?php print T_("Back to homepage") ?></a></p>
 
-<?php include("../include/bottom.php"); ?>
+<?php include("include/bottom.php"); ?>

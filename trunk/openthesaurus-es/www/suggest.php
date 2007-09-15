@@ -1,11 +1,11 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 $cancel_login = 1;
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Default_Auth"));
-include("../include/tool.php");
+include("include/tool.php");
 $title = "OpenThesaurus Suggestions";
 $page = "suggest";
-include("../include/top.php");
+include("include/top.php");
 ?>
 
 <?php
@@ -49,8 +49,8 @@ if (!$success) {
 }
 ?>
 
-<p><?php print _("Thanks for your contribution.") ?></p>
+<p><?php print T_("Thanks for your contribution.") ?></p>
 
 <p><a href="./">OpenThesaurus Homepage</a></p>
 
-<?php include("../include/bottom.php"); ?>
+<?php include("include/bottom.php"); ?>

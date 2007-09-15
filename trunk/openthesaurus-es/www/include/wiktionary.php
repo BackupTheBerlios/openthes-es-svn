@@ -42,14 +42,14 @@ if( $queryterm != "" ) {
 		#$synonyms = iconv("utf8", "latin1", $synonyms);
 		# end fixme
 		if ($synonyms == "") {
-			$synonyms = _("(none)");
+			$synonyms = T_("(none)");
 		}
 		?>
 		<li><strong>Bedeutungen:</strong> <?php print $meanings ?></li>
 		<li><strong>Synonyme:</strong> <?php print $synonyms ?></li>
 		<?php
 	} else { 
-		print "<li>"._("No matches")."</li>";
+		print "<li>".T_("No matches")."</li>";
 	}
 }
 ?>

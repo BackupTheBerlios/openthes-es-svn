@@ -23,8 +23,8 @@ if( WEB_LANG == 'de_DE' ) {
 		$head_title = preg_replace("/<.*?>/", "", $title);		# no HTML in head's title element
 	}
 	if( isset($login_page) && $login_page == 1 ) {
-		print "<title>"._("OpenThesaurus - German Thesaurus - Login")."</title>\n";
-		$title = _("OpenThesaurus - German Thesaurus - Login");
+		print "<title>".T_("OpenThesaurus - German Thesaurus - Login")."</title>\n";
+		$title = T_("OpenThesaurus - German Thesaurus - Login");
 		print KEYWORDS."\n";
 	} else if( isset($page) && $page == "homepage" ) {
 		print "<title>$head_title</title>\n";
@@ -101,9 +101,9 @@ if( WEB_LANG == 'de_DE' && array_key_exists('domainmove', $_GET) && $_GET['domai
 	<td>
 		<form style="margin-top:3px;margin-bottom:3px;" action="<?php print DEFAULT_SEARCH ?>" method="get" name="searchform">
 		<?php if( isset($page) && $page == "homepage" ) { ?>
-			<strong>&nbsp;<?php print _("OpenThesaurus Home") ?></strong>
+			<strong>&nbsp;<?php print T_("OpenThesaurus Home") ?></strong>
 		<?php } else { ?>
-			&nbsp;<a accesskey="h" href="<?php print BASE_URL ?>/"><?php print _("OpenThesaurus Home") ?></a>
+			&nbsp;<a accesskey="h" href="<?php print BASE_URL ?>/"><?php print T_("OpenThesaurus Home") ?></a>
 		<?php } ?>
 		<!--
 	 	|
@@ -115,21 +115,21 @@ if( WEB_LANG == 'de_DE' && array_key_exists('domainmove', $_GET) && $_GET['domai
 		-->	
 	 	|
 		<?php if( isset($page) && $page == "faq" ) { ?>
-			<strong><?php print _("FAQ") ?></strong>
+			<strong><?php print T_("FAQ") ?></strong>
 		<?php } else { ?>
-			<a href="<?php print BASE_URL ?>/faq.php"><?php print _("FAQ") ?></a>
+			<a href="<?php print BASE_URL ?>/faq.php"><?php print T_("FAQ") ?></a>
 		<?php } ?>
 		|
 		<?php if( isset($page) && $page == "imprint" ) { ?>
-			<strong><?php print _("Imprint") ?></strong>
+			<strong><?php print T_("Imprint") ?></strong>
 		<?php } else { ?>
-			<a href="<?php print BASE_URL ?>/imprint.php"><?php print _("Imprint") ?></a>
+			<a href="<?php print BASE_URL ?>/imprint.php"><?php print T_("Imprint") ?></a>
 		<?php } ?>
 		<?php if( !isset($page) || $page != "homepage" ) { ?>
 		|
 				<input type="hidden" name="search" value="1" />
-				<?php print _("Search:") ?> <input accesskey="s" type="text" name="word" size="14" />
-				<input type="submit" value="<?php print _("Go") ?>" />
+				<?php print T_("Search:") ?> <input accesskey="s" type="text" name="word" size="14" />
+				<input type="submit" value="<?php print T_("Go") ?>" />
 		<?php } else { ?>
 			&nbsp;
 		<?php } ?>
@@ -140,25 +140,26 @@ if( WEB_LANG == 'de_DE' && array_key_exists('domainmove', $_GET) && $_GET['domai
 	</td>
 	<td align="right">
 	<?php
-
+	
 	// lang.php redirects to homepage, so show the
 	// button only on the homepage to avoid confusion:
 	// WARNING: code duplicated from include/phplib/prepend.php3
-	
+	#require_once('../phplib/gettext.inc');
 	$langs = array();
 	array_push($langs, WEB_LANG);		// first = default
+	array_push($langs, "de_DE");
 	array_push($langs, "en");
 
 	if( isset($_COOKIE['thes_lang'])) {
-		setlocale(LC_ALL, $_COOKIE['thes_lang']);
+		T_setlocale(LC_ALL, $_COOKIE['thes_lang']);
 		$active_lang = $_COOKIE['thes_lang'];
 	} else {
 		$active_lang = $langs[0];
-		setlocale(LC_ALL, $langs[0]);
+		T_setlocale(LC_ALL, $langs[0]);
 	}
 
 	if( strpos(getenv("SCRIPT_NAME"), "/index.php") > -1 && DISPLAY_LANGUAGE_LINK) {
-		print _("Language: ");
+		print T_("Language: ");
 		foreach($langs as $lang) {
 			$lang_disp = $lang;
 			if( strlen($lang) > 2 ) {
@@ -183,20 +184,20 @@ if( WEB_LANG == 'de_DE' && array_key_exists('domainmove', $_GET) && $_GET['domai
 				print "<a href=\"".BASE_URL."/admin/\">ADMIN</a> - ";
 			}
 			if( isset($auth) ) {
-				print sprintf(_("Logged in as <span class=\"naviusername\">%s</span>"), $auth->auth['uname']);
+				print sprintf(T_("Logged in as <span class=\"naviusername\">%s</span>"), $auth->auth['uname']);
 				print "&nbsp;<br />";
 				if( isset($page) && $page == "prefs" ) {
-					print "<strong>"._("Preferences").'</strong>';
+					print "<strong>".T_("Preferences").'</strong>';
 				} else {
-					print "<a href=\"".BASE_URL."/prefs.php\">"._("Preferences").'</a>';
+					print "<a href=\"".BASE_URL."/prefs.php\">".T_("Preferences").'</a>';
 				}
 			}
-			print " - <a href=\"".BASE_URL."/logout.php?time=".time()."\">"._("Logout")."</a>";
+			print " - <a href=\"".BASE_URL."/logout.php?time=".time()."\">".T_("Logout")."</a>";
 		} else {
 			if( isset($page) && $page == "login" ) {
-				print "<strong>"._("Login")."</strong>";
+				print "<strong>".T_("Login")."</strong>";
 			} else {
-				print "<a href=\"".BASE_URL."/login.php\">"._("Login")."</a>";
+				print "<a href=\"".BASE_URL."/login.php\">".T_("Login")."</a>";
 			}
 		}
 	?>

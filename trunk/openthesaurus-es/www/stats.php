@@ -3,14 +3,14 @@ if( isset($db) ) {
 	# called from index.php, don't re-initialise vars
 } else {
 	# called from cronjob
-	include("../include/phplib/prepend.php3");
-	include("../include/tool.php");
+	include("include/phplib/prepend.php3");
+	include("include/tool.php");
 	$db = new DB_Thesaurus;
 }
 ?>
 		<table cellspacing="2" cellpadding="0" border="0">
 		<tr>
-			<td colspan="2"><strong><?php print _("Database statistics") ?><br />
+			<td colspan="2"><strong><?php print T_("Database statistics") ?><br />
 				<span class="newsdate"><?php print date(TIMEFORMAT)?></span></strong></td>
 		</tr>
 
@@ -26,7 +26,7 @@ if( isset($db) ) {
 		$db->next_record();
 		?>
 		<tr>
-			<td><?php print _("Number of words:") ?></td>
+			<td><?php print T_("Number of words:") ?></td>
 			<td align="right"><?php print number_format($db->f('ct'), 0, ',', '.')?></td>
 		</tr>
 
@@ -36,7 +36,7 @@ if( isset($db) ) {
 		$db->next_record();
 		?>
 		<tr>
-			<td><?php print _("Number of synonym sets:") ?></td>
+			<td><?php print T_("Number of synonym sets:") ?></td>
 			<td align="right"><?php print number_format($db->f('ct'), 0, ',', '.')?></td>
 		</tr>
 
@@ -49,7 +49,7 @@ if( isset($db) ) {
 		?>
 		<!-- 
 		<tr>
-			<td><?php //print _("User contributions:") ?></td>
+			<td><?php //print T_("User contributions:") ?></td>
 			<td valign="bottom" align="right"><?php //print number_format($db->f('ct'), 0, ',', '.')?></td>
 		</tr>
 		 -->
@@ -60,7 +60,7 @@ if( isset($db) ) {
 		$db->next_record();
 		?>
 		<tr>
-			<td><?php print _("Subscribed users:") ?></td>
+			<td><?php print T_("Subscribed users:") ?></td>
 			<td align="right" valign="bottom"><?php print number_format($db->f('ct'), 0, ',', '.')?></td>
 		</tr>
 
@@ -74,7 +74,7 @@ if( isset($db) ) {
 		$db->next_record();
 		?>
 		<tr>
-			<td><?php print sprintf(_("Changes (last %d days):"), $limit) ?></td>
+			<td><?php print sprintf(T_("Changes (last %d days):"), $limit) ?></td>
 			<td align="right" valign="bottom"><?php print number_format($db->f('ct'), 0, ',', '.')?></td>
 		</tr>
 		</table>

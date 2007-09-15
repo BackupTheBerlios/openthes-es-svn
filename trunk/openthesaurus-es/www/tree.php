@@ -1,8 +1,8 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 $cancel_login = 1;
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Default_Auth"));
-include("../include/tool.php");
+include("include/tool.php");
 $db = new DB_Thesaurus;
 $inner_db = new DB_Thesaurus;
 
@@ -49,7 +49,7 @@ function printSubordinateSynsets($db, $inner_db, $id, $top_id) {
 			print "<a class=\"openplus\" href=\"tree.php?id=$id#position\"><tt>[-]</tt></a> ";
 		} else {
 			print "<a class=\"openplus\" href=\"tree.php?id=$sub_id#position\" ".
-				"title=\""._("Show subordinate meanings")."\"><tt>[+]</tt></a> ";
+				"title=\"".T_("Show subordinate meanings")."\"><tt>[+]</tt></a> ";
 		}
 		print "<a href=\"synset.php?id=$sub_id\">";
 		if( $open ) {
@@ -66,19 +66,19 @@ function printSubordinateSynsets($db, $inner_db, $id, $top_id) {
 	}
 	if( $i == 0 && $openall == 0 ) {
 		// shouldn't happen - there's no such link
-		print "\t<li>"._("No subordinate meanings defined yet")."</li>\n";
+		print "\t<li>".T_("No subordinate meanings defined yet")."</li>\n";
 	}
 	print "\t</ul>\n";
 }
 
-$title = _("OpenThesaurus Tree");
-include("../include/top.php");
+$title = T_("OpenThesaurus Tree");
+include("include/top.php");
 ?>
 
 <p>
-<?php print _("This page displays the OpenThesaurus hierarchie of nouns. Click the <tt>[+]</tt> links to step into the hierarchie.") ?>
+<?php print T_("This page displays the OpenThesaurus hierarchie of nouns. Click the <tt>[+]</tt> links to step into the hierarchie.") ?>
 
-<?php print _("Note that this page only shows synonym sets which have been classified (which is the case for only a fraction of all terms in OpenThesaurus).") ?>
+<?php print T_("Note that this page only shows synonym sets which have been classified (which is the case for only a fraction of all terms in OpenThesaurus).") ?>
 </p>
 
 <?php
@@ -125,6 +125,6 @@ $db->query($query);
 <?php } ?>
 
 <?php
-include("../include/bottom.php");
+include("include/bottom.php");
 page_close();
 ?>

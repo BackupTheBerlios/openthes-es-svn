@@ -1,8 +1,8 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Auth"));
 $auth->login_if($auth->auth["uid"] == "nobody");
-include("../include/tool.php");
+include("include/tool.php");
 $db = new DB_Thesaurus;
 $inner_db = new DB_Thesaurus;
 
@@ -65,7 +65,7 @@ if( $db->nf() == 0 ) {
 $db->next_record();
 $subject_id = $db->f('subject_id');
 
-$title = sprintf(_("Details for synset '%s'"), getSynsetString(uservar('mid'), 3));
+$title = sprintf(T_("Details for synset '%s'"), getSynsetString(uservar('mid'), 3));
 
 function popdownlist() {
 	global $db, $subject_id;
@@ -73,8 +73,8 @@ function popdownlist() {
 	$db->query($query);
 	$i = 0;
 	print '<select name="subject_id">';
-	print '<option value="">'._("(none)").'</option>'."\n";
-	$oldsubject = _("(none)");
+	print '<option value="">'.T_("(none)").'</option>'."\n";
+	$oldsubject = T_("(none)");
 	while( $db->next_record() ) {
 		$checked = "";
 		# specific to German OpenThesaurus:
@@ -101,7 +101,7 @@ if ($changed) {
 	return;
 }
 
-include("../include/top.php");
+include("include/top.php");
 ?>
 
 <form action="synset_detail.php" method="post">
@@ -110,39 +110,39 @@ include("../include/top.php");
 
 <table border="0" cellpadding="4" cellspacing="0">
 <tr>
-	<td width="15%"><strong><?php print _("Synset:") ?></strong></td>
+	<td width="15%"><strong><?php print T_("Synset:") ?></strong></td>
 	<td><?php print join(', ', getSynset($db->f('id'))); ?></td>
 </tr>
 <?php if( isset($auth) && array_key_exists('uname', $auth->auth) && $auth->auth['uname'] == 'admin' ) {
 	?>
 	<tr>
-		<td><strong><?php print _("Visible:") ?></strong></td>
+		<td><strong><?php print T_("Visible:") ?></strong></td>
 		<td><input type="checkbox" name="visible"
 			<?php if( !$db->f('hidden')) { print 'checked=checked'; } ?> /></td>
 	</tr>
 	<tr>
-		<td><strong><?php print _("in terms of:") ?></strong></td>
+		<td><strong><?php print T_("in terms of:") ?></strong></td>
 		<td><input type="text" name="distinction" value="<?php print $db->f('distinction'); ?>" /></td>
 	</tr>
 	<?php
 } ?>
 <tr>
-	<td valign="top"><strong><?php print _("Subject:") ?></strong></td>
+	<td valign="top"><strong><?php print T_("Subject:") ?></strong></td>
 	<td>
 		<?php popdownlist(); ?>
 	</td>
 </tr>
 <tr>
 	<td></td>
-	<td><?php print "<input type=\"submit\" value=\"" . _("Modify") . "\" />" ?></td>
+	<td><?php print "<input type=\"submit\" value=\"" . T_("Modify") . "\" />" ?></td>
 </tr>
 </table>
 
 </form>
 
-<p><a href="synset.php?id=<?php print escape(uservar('mid')) ?>"><?php print _("Back to synset") ?></a></p>
+<p><a href="synset.php?id=<?php print escape(uservar('mid')) ?>"><?php print T_("Back to synset") ?></a></p>
 
 <?php
-include("../include/bottom.php");
+include("include/bottom.php");
 page_close();
 ?>
