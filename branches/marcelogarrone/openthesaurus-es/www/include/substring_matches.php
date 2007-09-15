@@ -4,7 +4,7 @@ if( ! uservar('substring') && $queryterm != "" ) {
 	$user_word = escape(uservar('word'));
 	$limit = 10;
 	$results = getSubstringMatches($db, trim($_GET['word']), $limit);
-	print "<p class=\"compact\"><strong>"._("Substring matches in OpenThesaurus:")."</strong></p>";
+	print "<p class=\"compact\"><strong>".T_("Substring matches in OpenThesaurus:")."</strong></p>";
 	print "<ul class=\"compact\">";
 	$substr_matches = 0;
 	if( sizeof($results) > 0 ) {
@@ -28,12 +28,12 @@ if( ! uservar('substring') && $queryterm != "" ) {
 			<?php
 		}
 		if( $more_matches ) { ?>
-			<li style="list-style: none"><a href="substring_search.php?word=<?php print urlencode($_GET['word']) ?>"><?php print _("&gt;&gt; more substring matches") ?></a></li>
+			<li style="list-style: none"><a href="substring_search.php?word=<?php print urlencode($_GET['word']) ?>"><?php print T_("&gt;&gt; more substring matches") ?></a></li>
 			<?php
 		}
 	}
 	if ( $substr_matches == 0 ) {
-		print "<li>"._("No substring matches")."</li>";
+		print "<li>".T_("No substring matches")."</li>";
 	}
 	print "</ul>";
 }

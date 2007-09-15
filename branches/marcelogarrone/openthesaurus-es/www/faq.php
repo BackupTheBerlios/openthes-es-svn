@@ -1,10 +1,10 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 $cancel_login = 1;
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Default_Auth"));
 $title = "OpenThesaurus FAQ";
 $page = "faq";
-include("../include/top.php");
+include("include/top.php");
 ?>
 
 <p>Sorry, most of the FAQ is only available in German.
@@ -226,49 +226,49 @@ addFAQ("Was sind die \"Wikipedia-Links\"?",
 #	<a href="http://hunspell.sourceforge.net/">Hunspell</a>.',
 #	'spellcheck');
 
-$filename_ooo = "download/OOo-Thesaurus-snapshot.zip";
+$filename_ooo = TARGET_DOWNLOAD . TARGET_OOO;
 $fp = fopen($filename_ooo, "r");
 $s_array = fstat($fp);
 fclose($fp);
 $date_ooo = strftime("%Y-%m-%d %H:%M", $s_array["mtime"]);
 $size_ooo = sprintf("%.0f", $s_array["size"]/1000);
 
-$filename_ooo2 = "download/thes_de_DE_v2.zip";
+$filename_ooo2 = TARGET_DOWNLOAD . TARGET_OOO2;
 $fp = fopen($filename_ooo2, "r");
 $s_array = fstat($fp);
 fclose($fp);
 $date_ooo2 = strftime("%Y-%m-%d %H:%M", $s_array["mtime"]);
 $size_ooo2 = sprintf("%.0f", $s_array["size"]/1000);
 
-$filename_ooo2_ch = "download/thes_de_CH_v2.zip";
-$fp = fopen($filename_ooo2_ch, "r");
-$s_array = fstat($fp);
-fclose($fp);
-$date_ooo2_ch = strftime("%Y-%m-%d %H:%M", $s_array["mtime"]);
-$size_ooo2_ch = sprintf("%.0f", $s_array["size"]/1000);
+# $filename_ooo2_ch = TARGET_DOWNLOAD . "/thes_de_CH_v2.zip";
+# $fp = fopen($filename_ooo2_ch, "r");
+# $s_array = fstat($fp);
+# fclose($fp);
+# $date_ooo2_ch = strftime("%Y-%m-%d %H:%M", $s_array["mtime"]);
+# $size_ooo2_ch = sprintf("%.0f", $s_array["size"]/1000);
 
-$filename = "download/thesaurus_dump.tar.bz2";
+$filename = TARGET_DOWNLOAD . "/thesaurus_dump.tar.bz2";
 $fp = fopen($filename, "r");
 $s_array = fstat($fp);
 fclose($fp);
 $date = strftime("%Y-%m-%d %H:%M", $s_array["mtime"]);
 $size = sprintf("%.0f", $s_array["size"]/1000);
 
-$filename_txt = "download/thesaurus.txt.gz";
+$filename_txt = TARGET_DOWNLOAD . TARGET_TEXT;
 $fp = fopen($filename_txt, "r");
 $s_array = fstat($fp);
 fclose($fp);
 $date_txt = strftime("%Y-%m-%d %H:%M", $s_array["mtime"]);
 $size_txt = sprintf("%.0f", $s_array["size"]/1000);
 
-$filename_kword = "download/kword_thesaurus.txt.gz";
+$filename_kword = TARGET_DOWNLOAD . TARGET_KWORD;
 $fp = fopen($filename_kword, "r");
 $s_array = fstat($fp);
 fclose($fp);
 $date_kword = strftime("%Y-%m-%d %H:%M", $s_array["mtime"]);
 $size_kword = sprintf("%.0f", $s_array["size"]/1000);
 
-// TODO: include("../include/download.php") ?
+// TODO: include("include/download.php") ?
 addFAQ("Wo kann ich die Thesaurus-Daten herunterladen?",
 	"<p>Die deutschen OpenThesaurus-Daten stehen unter der <a href=\"http://www.gnu.org/licenses/lgpl.html\">LGPL</a>
 	zur Verfügung:</p>
@@ -284,11 +284,6 @@ addFAQ("Wo kann ich die Thesaurus-Daten herunterladen?",
 			<ul>
 				<li><a href=\"$filename_ooo2\"><strong>Thesaurus für OpenOffice.org 2.x</strong>
 				($size_ooo2 KB, generiert $date_ooo2)</a></li>
-				<li><a href=\"$filename_ooo2_ch\">Thesaurus für OpenOffice.org 2.x, schweizer Version
-				($size_ooo2_ch KB, generiert $date_ooo2_ch)</a> -- Diese Version unterscheidet
-				sich von der Standard-Version nur dadurch, dass alle 
-				<span class=\"bsp\">&szlig;</span> durch <span class=\"bsp\">ss</span>
-				ersetzt wurden</li>
 				<li><a href=\"$filename_ooo\">Thesaurus für OpenOffice.org 1.x ($size_ooo KB,
 				generiert $date_ooo)</a><br />
 				Während hier auf der Website Wörter nach Bedeutungen unterschieden werden,
@@ -362,7 +357,7 @@ addFAQ("$eflag I'm looking for an English thesaurus.",
 
 addFAQ("$eflag I want to start a thesaurus project like OpenThesaurus, but for a new language. 
 	What should I do?",
-	'<p>Please read <a href="download/openthesaurus.pdf">this paper (PDF, 266 KB)</a>, it
+	'<p>Please read <a href=TARGET_DOWNLOAD . "/openthesaurus.pdf">this paper (PDF, 266 KB)</a>, it
 	explains how OpenThesaurus works and how it can be 
 	adapted to other languages. Contact me if you have other questions.</p>');
 	// TODO: link <a href="http://sourceforge.net/projects/openthesaurus/">...</a>
@@ -421,4 +416,4 @@ foreach($q_list as $item) {
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
-<?php include("../include/bottom.php"); ?>
+<?php include("include/bottom.php"); ?>

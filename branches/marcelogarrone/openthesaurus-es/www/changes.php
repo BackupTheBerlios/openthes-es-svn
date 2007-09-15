@@ -1,17 +1,17 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Auth"));
 $db = new DB_Thesaurus;
-include("../include/tool.php");
+include("include/tool.php");
 
 function shorten($str, $length=15) {
 	$str = substr($str, 0, $length);
 	return $str;
 }
 
-$title = _("Recent changes in the thesaurus");
+$title = T_("Recent changes in the thesaurus");
 $no_text_decoration = 1;
-include("../include/top.php");
+include("include/top.php");
 ?>
 
 <?php
@@ -23,7 +23,7 @@ if( $actions_limit > 500 ) {
 	$actions_limit = 500;
 }
 ?>
-<strong><?php print _("Recent changes");?>: <a href="changes.php?actions_limit=30">30</a>,
+<strong><?php print T_("Recent changes");?>: <a href="changes.php?actions_limit=30">30</a>,
 	<a href="changes.php?actions_limit=100">100</a>,
 	<a href="changes.php?actions_limit=250">250</a></strong><br />
 
@@ -58,8 +58,8 @@ if( $actions_limit > 500 ) {
 					?></td>
 				<td valign="top"><?php
         $username = escape($db->f('visiblename'));
-		    if( $username == "" || $username == _("(anonymous)") ) {
-			  $username = "<span class=\"anonymous\">"._("(anonymous)")."</span>";
+		    if( $username == "" || $username == T_("(anonymous)") ) {
+			  $username = "<span class=\"anonymous\">".T_("(anonymous)")."</span>";
 			  }
         print $username ?>
         </td>
@@ -71,7 +71,7 @@ if( $actions_limit > 500 ) {
 				$date = str_replace(" ", "&nbsp;", $db->f('date'));
 				$comment = $db->f('comment');
 				if( ! $comment ) {
-					$comment = _("[none]");
+					$comment = T_("[none]");
 				}
 			?>
 			<td valign="top">
@@ -90,6 +90,6 @@ if( $actions_limit > 500 ) {
 <br />
 
 <?php
-include("../include/bottom.php");
+include("include/bottom.php");
 page_close();
 ?>

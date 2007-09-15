@@ -1,12 +1,12 @@
 <?php
 
-if( ! (getenv('REMOTE_ADDR') == getenv('SERVER_ADDR')) ) {
-	print "Access from your host is denied.";
-	return;
-}
+// if( ! (getenv('REMOTE_ADDR') == getenv('SERVER_ADDR')) ) {
+// 	print "Access from your host is denied.";
+// 	return;
+// }
 
 #### Configuration ###
-$lang = "de_DE";
+$lang = "es_ES";
 # This is the text attached to the generic terms:
 $generic_term = " (Oberbegriff)";
 #$sub_term = " (Unterbegriff)";		# leave empty to disable
@@ -19,16 +19,16 @@ $min_depth = 4;
 # FIXME -- not yet properly tested: ging -> gehen etc. (requires word_forms, word_mappings tables):
 $full_forms = 0;
 
-include("../../include/phplib/prepend.php3");
+include("../include/phplib/prepend.php3");
 $db = new DB_Thesaurus;
 $db2 = new DB_Thesaurus;
-include("../../include/tool.php");
+include("../include/tool.php");
 
-$swiss_spelling = 0;			# replace "ß" by "ss" (makes sense only for German)?
-if (sizeof($argv) == 2 && $argv[1] == "de_CH") {
-	$swiss_spelling = 1;
-	$lang = "de_CH";
-}	
+// $swiss_spelling = 0;			# replace "ï¿½" by "ss" (makes sense only for German)?
+// if (sizeof($argv) == 2 && $argv[1] == "de_CH") {
+// 	$swiss_spelling = 1;
+// 	$lang = "de_CH";
+// }	
 $output_file = "../OOo2-Thesaurus/th_".$lang."_v2.dat";
 $index_file = "../OOo2-Thesaurus/th_".$lang."_v2.idx";
 $readme_template = "README_OOo2_template";
@@ -75,13 +75,13 @@ function swissSpelling($word) {
 	if ($swiss_spelling == 1) {
 		# Seems we need to use conv because *this* file (ooo_new_export.php)
 		# is in UTF-8?
-		$word = preg_replace("/".iconv("latin1", "utf8", "ß")."/", "ss", $word);
+		$word = preg_replace("/".iconv("latin1", "utf8", "ï¿½")."/", "ss", $word);
 	}
 	return $word;
 }
 
 $title = "OpenThesaurus admin interface: Build OOo 2.0 thesaurus files";
-include("../../include/top.php");
+include("../include/top.php");
 
 print strftime("%H:%M:%S")." -- Building data...<br />\n";
 
@@ -324,19 +324,19 @@ if( ! $readme_fh ) {
 fwrite($readme_fh, $readme);
 fclose($readme_fh);
 
-print "Calling ZIP...<br>\n";
+print "Calling BZIP2...<br>\n";
 print "<pre>";
-$target = "../download/thes_".$lang."_v2.zip";
-$tmp_target = "thes_".$lang."_v2.zip";
+$target = "../download/" . TARGET_OOO2;
+$tmp_target = TARGET_OOO2;
 if (!chdir("../OOo2-Thesaurus")) {
 	print "Error switching to ../OOo2-Thesaurus\n";
 	return;
 }
-$zip = "/usr/bin/zip $tmp_target th_".$lang."_v2.idx th_".$lang."_v2.dat README_th_".$lang."_v2.txt";
-print "$zip\n";
+$bzip2 = "cd ../OOo2-Thesaurus && /bin/tar -cjf $tmp_target th_".$lang."_v2.idx th_".$lang."_v2.dat README_th_".$lang."_v2.txt COPYING";
+print "$bzip2\n";
 
-if( ! system($zip) ) {
-	print "Error executing zip\n";
+if( ! system($bzip2) ) {
+	print "Error executing bzip2\n";
 	return;
 }
 
@@ -347,7 +347,7 @@ if( ! rename($tmp_target, $target) ) {
 print "</pre>";
 
 print "<p>";
-print strftime("%H:%M:%S")." -- ZIP saved as <a href=\"../$target\">OOo2-Thesaurus.zip</a></p>";
+print strftime("%H:%M:%S")." -- BZIP2 saved as <a href=\"../$target\">$tmp_target</a></p>";
 
 print "<hr>";
 

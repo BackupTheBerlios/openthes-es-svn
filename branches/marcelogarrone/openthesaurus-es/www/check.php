@@ -1,13 +1,13 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 $cancel_login = 1;
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Default_Auth"));
-include("../include/tool.php");
+include("include/tool.php");
 $db = new DB_Thesaurus;
 
-$title = _("OpenThesaurus: Check synsets");
+$title = T_("OpenThesaurus: Check synsets");
 $stop_robots = 1;
-include("../include/top.php");
+include("include/top.php");
 
 if (!array_key_exists('limit', $_GET)) {
 	$limit = 5;
@@ -17,7 +17,7 @@ if (!array_key_exists('limit', $_GET)) {
 
 ?>
 
-<?php print sprintf(_("<p>Here are %s randomly selected synonym sets. Please check if each group contains only synonyms. If it doesn't, please follow the link and fix the synset:</p>"), $limit) ?>
+<?php print sprintf(T_("<p>Here are %s randomly selected synonym sets. Please check if each group contains only synonyms. If it doesn't, please follow the link and fix the synset:</p>"), $limit) ?>
 
 <?php
 $check_new_prob = 50;
@@ -65,13 +65,13 @@ $db->query($query);
 <hr/>
 
 <p>
-<a href="check.php?time=%s&amp;limit=5"><?php print sprintf(_("&gt;&gt; Show %d more random synsets"), 5) ?></a><br />
-<a href="check.php?time=%s&amp;limit=10"><?php print sprintf(_("&gt;&gt; Show %d more random synsets"), 10) ?></a><br />
-<a href="check.php?time=%s&amp;limit=15"><?php print sprintf(_("&gt;&gt; Show %d more random synsets"), 15 ) ?></a><br />
-<a href="check.php?time=%s&amp;limit=20"><?php print sprintf(_("&gt;&gt; Show %d more random synsets"), 20) ?></a><br />
+<a href="check.php?time=%s&amp;limit=5"><?php print sprintf(T_("&gt;&gt; Show %d more random synsets"), 5) ?></a><br />
+<a href="check.php?time=%s&amp;limit=10"><?php print sprintf(T_("&gt;&gt; Show %d more random synsets"), 10) ?></a><br />
+<a href="check.php?time=%s&amp;limit=15"><?php print sprintf(T_("&gt;&gt; Show %d more random synsets"), 15 ) ?></a><br />
+<a href="check.php?time=%s&amp;limit=20"><?php print sprintf(T_("&gt;&gt; Show %d more random synsets"), 20) ?></a><br />
 </p>
 
 <?php 
-include("../include/bottom.php"); 
+include("include/bottom.php"); 
 page_close();
 ?>

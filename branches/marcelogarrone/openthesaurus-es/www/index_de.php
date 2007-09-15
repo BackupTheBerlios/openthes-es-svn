@@ -1,13 +1,13 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 $cancel_login = 1;
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Default_Auth"));
-include("../include/tool.php");
+include("include/tool.php");
 $db = new DB_Thesaurus;
 
-$title = _("OpenThesaurus - German Thesaurus");
+$title = T_("OpenThesaurus - German Thesaurus");
 $page = "homepage";
-include("../include/top.php");
+include("include/top.php");
 ?>
 
 <p>OpenThesaurus ist ein Open-Source-Thesaurus für die deutsche Sprache. Jeder kann
@@ -21,23 +21,23 @@ mitmachen und z.B. einem Eintrag ein neues Synonym hinzufügen (siehe <a href="f
 			<input type="hidden" name="search" value="1" />
 			<table border="0" align="left" cellspacing="0" cellpadding="2">
 			<tr>
-				<td><strong>&gt;&gt;<?php print _("Word") ?>:</strong></td>
+				<td><strong>&gt;&gt;<?php print T_("Word") ?>:</strong></td>
 				<td><input accesskey="s" type="text" size="18" name="word" value="" /></td>
-				<td><?php print "<input type='submit' value='" . _("Search") . "' />" ?></td>
+				<td><?php print "<input type='submit' value='" . T_("Search") . "' />" ?></td>
 			</tr>
 			<? if (strpos(DEFAULT_SEARCH, "synset") !== false) { ?>
 			<tr>
 				<td></td>
 				<td colspan="2"><label class="myhover"><input type="checkbox" name="substring" />
-					<?php print _("Find substrings") ?></label></td>
+					<?php print T_("Find substrings") ?></label></td>
 			</tr>
 			<? } ?>
 			<tr><td></td></tr>
 			<tr>
 				<td colspan="3">
 					<a href="check.php?time=<?php print time() ?>"><strong>&gt;&gt;Synonyme prüfen</strong></a><br />
-					<a href="tree.php"><strong>&gt;&gt;<?php print _("Tree view") ?></strong></a><br />
-					<a href="top_users.php"><strong>&gt;&gt;<?php print _("Top 15 users") ?></strong></a>
+					<a href="tree.php"><strong>&gt;&gt;<?php print T_("Tree view") ?></strong></a><br />
+					<a href="top_users.php"><strong>&gt;&gt;<?php print T_("Top 15 users") ?></strong></a>
 				</td>
 			</tr>
 			
@@ -59,7 +59,7 @@ mitmachen und z.B. einem Eintrag ein neues Synonym hinzufügen (siehe <a href="f
 			<!--
 			<tr><td></td></tr>
 			<tr>
-				<td colspan="3"><a href="changes.php"><strong>&gt;&gt;<?php print _("Recent changes") ?></strong></a></td>
+				<td colspan="3"><a href="changes.php"><strong>&gt;&gt;<?php print T_("Recent changes") ?></strong></a></td>
 			</tr>
 			-->
 			</table>
@@ -156,9 +156,9 @@ google_color_url = "008000";
 </tr>
 <tr><td></td></tr>
 <tr>
-	<td valign="top"><strong><?php print _("Download") ?></strong><br />
-		<a href="faq.php#ooo"><?php print _("&gt;&gt;details") ?></a></td>
-	<td><?php include("../include/download.php"); ?></td>
+	<td valign="top"><strong><?php print T_("Download") ?></strong><br />
+		<a href="faq.php#ooo"><?php print T_("&gt;&gt;details") ?></a></td>
+	<td><?php include("include/download.php"); ?></td>
 	<td align="center">
 	
 	<!-- Creative Commons License -->
@@ -203,6 +203,6 @@ google_color_url = "008000";
 </script>
 
 <?php 
-include("../include/bottom.php"); 
+include("include/bottom.php"); 
 page_close();
 ?>

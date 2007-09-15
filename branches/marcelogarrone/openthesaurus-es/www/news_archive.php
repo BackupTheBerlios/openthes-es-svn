@@ -1,210 +1,90 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 $cancel_login = 1;
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Default_Auth"));
-include("../include/tool.php");
+include("include/tool.php");
 $db = new DB_Thesaurus;
 
-$title = _("OpenThesaurus - News Archiv");
-include("../include/top.php");
+$title = T_("OpenThesaurus - News Archiv");
+include("include/top.php");
 ?>
 
 <table border="0" cellpadding="2" cellspacing="5">
+
+
 <tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2007-05-11</span></td>
-	<td valign="top">Mehr Eintr&auml;ge aus dem deutschen <a href="http://de.wiktionary.org">Wiktionary</a>:
-		schon l&auml;nger wird bei jeder Suche automatisch auch das Wiktionary durchsucht --
-		diese Daten wurden aktualisiert und umfassen jetzt &uuml;ber 21.000 
-		deutsche W&ouml;rter, zus&auml;tzlich zu den über 41.000 W&ouml;rtern aus OpenThesaurus.</td>
+	<td valign="top" align="right" width="90"><span class="newsdate">2006-09-29</span></td>
+	<td valign="top">Canal IRC: #openthesaurus-es (irc.freenode.net)</td>
 </tr>
 <tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2006-09-25</span></td>
-	<td valign="top">Bessere Performance: Nach einem Umzug des Servers vor drei Wochen
-		hatte die Geschwindigkeit von www.openthesaurus.de etwas nachgelassen. Durch
-		Optimierungen an der Datenbank sollte die gesamte Website
-		jetzt wieder deutlich schneller sein.</td>
+	<td valign="top" align="right" width="90"><span class="newsdate">2006-09-12</span></td>
+	<td valign="top">Actualizaci&oacute;n del portal OpenThesaurus-es</td>
 </tr>
 <tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2006-07-04</span></td>
-	<td valign="top">Das neue <a href="http://de.openoffice.org">OpenOffice.org</a> 2.0.3 enthält
-		jetzt den deutschen OpenThesaurus, so dass keine nachträgliche Installation des Thesaurus 
-		mehr nötig ist.</td>
+	<td valign="top" align="right" width="90"><span class="newsdate">2005-12-16</span></td>
+	<td valign="top">Volvimos a estar al servicio. Gracias a toda la comunidad. </td>
 </tr>
 <tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2006-06-11</span></td>
-	<td valign="top">Die für OpenOffice.org exportierten Dateien enthalten jetzt auch
-		Antonyme, z.B. findet man bei der Suche nach <span class="bsp">Krieg</span> auch den
-		Eintrag <span class="bsp">Frieden (Antonym)</span>. Da viele Wörter allerdings
-		keine echten Antonyme haben, betrifft das insgesamt nur wenige Einträge.</td>
-</tr>
-<tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2006-03-17</span></td>
-	<td valign="top">OpenThesaurus steht ab sofort nicht mehr unter der
-		<a href="http://www.gnu.org/copyleft/gpl.html">GPL</a> zu Verfügung, sondern
-		unter der <a href="http://www.gnu.org/copyleft/lesser.html">LGPL</a>.</td>
-</tr>
-<tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2006-02-22</span></td>
-	<td valign="top">Der Datenexport für OpenOffice.org 2.x wurde so verbessert, dass jetzt auch Wörter gefunden werden 
-		die in Klammern Zusatzinformationen haben, z.B. <span class="bsp">Velo (schweiz.)</span>. Bisher 
-		wurde dieser Eintrag bei der Suche nach <span class="bsp">Velo</span> nicht gefunden, mit der 
-		aktuellen Version geht das jetzt. Insgesamt betrifft das ca. 1000 Wörter, 
-		ein Update (in OpenOffice.org über "Assistenten" -&gt; "Weitere Wörterbücher installieren") lohnt sich also.
-		Siehe auch <a href="faq.php#ooo">den Eintrag in der FAQ</a>.</td>
-</tr>
-<tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2005-04-18</span></td>
-	<td valign="top">Der Thesaurus für OpenOffice.org 2.0 beinhaltet ab jetzt auch Oberbegriffe.
-		Außerdem sei noch auf die Seite <a
-		href="background.php">Hintergrundinformationen</a> hingewiesen, auf der sich
-		zwei Papers über OpenThesaurus befinden.</td>
-</tr>
-<tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2005-03-04</span></td>
-	<td valign="top">Passend zur <a href="http://download.openoffice.org/680/index.html">OpenOffice.org&nbsp;2.0
-		beta</a> gibt es jetzt hier auch den Thesaurus für OOo&nbsp;2.0 -- der alte Thesaurus
-		funktioniert nämlich nicht mehr (und genauso läuft der neue nicht mit OpenOffice&nbsp;1.x).
-		Hauptvorteil des neuen Thesaurus ist die Unterstützung mehrerer Bedeutungen pro Wort,
-		z.&nbsp;B. findet <span class="bsp">Auflösung</span> jetzt die verschiedenen 
-		Bedeutungen (<span class="bsp">Auflösung</span> im Sinne von <span class="bsp">Antwort</span>,
-		im Sinne von <span class="bsp">Granularität</span> etc) und zu
-		diesen dann die Synonyme -- ähnlich wie hier auf der Website.
+	<td valign="top" align="right" width="90"><span class="newsdate">2004-11-13</span></td>
+	<td valign="top"><b>Actualizaciones</b><br>
+ 	1. Gracias a Nestor, se agreg&oacute; algo m&uacute;y &uacute;til y pr&aacute;ctico a la hora de ingresar sin&oacute;nimos. Antes uno ten&iacute;a que hacer un clic en el casillero para luego agregar la palabra, algo no muy pr&aacute;ctico.<br>
+ 	Ahora qued&oacute; predeterminado el "foco" en el casillero donde se ingresa los nuevos sin&oacute;nimos: Sin&oacute;nimo B [Enter] Sin&oacute;nimo C [Enter] etc <br>
+ 	2. En la cabezera qued&oacute; integrado un link al diccionario de la RAE para las dudas en algunos t&eacute;rminos. (est&aacute; vinculado e integrado al portal)<br>
+	Volvimos a estar al servicio. Gracias a toda la comunidad.
 	</td>
 </tr>
 <tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2004-09-27</span></td>
-	<td valign="top">Es stehen jetzt einige shortcuts ("access keys") zur Verfügung, so dass
-		man Teile dieser Website über Tastaturkürzel bedienen kann:
-		<a href="keys.php#korr">Liste der Tastaturkürzel</a>. Außerdem kann man jetzt
-		auch auf den Text neben einer Checkbox klicken, um diese zu aktivieren
-		(bisher musste man die Checkbox selber anklicken).
-	</td>
-</tr>
-<tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2004-06-21</span></td>
-	<td valign="top">An die aktiven Teilnehmer: beachtet bitte die zwei kleinen
-		Ergänzungen zum Thema regionale und veraltete Wörter
-		in der <a href="faq.php#korr">FAQ</a>.
-	</td>
-</tr>
-<tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2004-06-16</span></td>
-	<td valign="top">Umzug auf den neuen Server abgeschlossen.</td>
-</tr>
-<tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2004-04-07</span></td>
-	<td valign="top">Aus Geschwindigkeitsgründen kann die Datenbank-Statistik
-		auf der Homepage nur noch alle 10 Minuten aktualisiert werden. Die
-		<a href="top_users.php">Benutzer-Top10</a> wird weiterhin
-		 in Echtzeit aktualisiert.
-	</td>
-</tr>
-<tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2004-04-04</span></td>
-	<td valign="top">OpenThesaurus ist jetzt unter der Domain
-		<span style="color:#666666;font-weight:bold">www.openthesaurus.de</span>
-		zu erreichen.
-	</td>
-</tr>
-<tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2004-03-31</span></td>
-	<td valign="top">Neues Feature: <a href="top_users.php">Benutzer-Top10</a>
-		-- listet die Top 15 der Benutzer, die in den letzten 7 bzw. 365 Tagen
-		die meisten Beiträge geleistet haben. Aus Datenschutzgründen
-		muss man als Benutzer erst auf der Seite <a href="prefs.php">Einstellungen</a>
-		seinen Namen (oder ein Pseudonym) angeben, sonst erscheint
-		der eigene Eintrag nur als "anonym".
-	</td>
-</tr>
-<tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2004-01-12</span></td>
-	<td valign="top">Es gibt jetzt es eine Mailingliste
-				für Diskussionen und Announcements zu OpenThesaurus:
-				<a href="http://lists.berlios.de/mailman/listinfo/openthesaurus-discuss#sub">Hier eintragen</a>
-				<!-- (<a href="http://lists.berlios.de/pipermail/openthesaurus-discuss/">Archiv der Beiträge</a>) -->
-	</td>
-</tr>
-<tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2004-01-06</span></td>
-	<td valign="top">Es stehen ab sofort auch einzelne
-			Begriffe in den Daten, also Wörter ohne Synonyme. Das hat seine
-			Richtigkeit, denn es wird jetzt eine Begriffshierarchie aufgebaut.
-			Oberster Begriff, der alle anderen Nomen umfasst, ist
-			<a href="synset.php?id=<?php print TOP_SYNSET_ID?>"><?php
-				print TOP_SYNSET_NAME ?></a>.
-			Mehr dazu in der <a href="faq.php#hierarchie">FAQ</a>.</td>
-</tr>
-<tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2003-11-06</span></td>
-	<td valign="top"><a href="download/openthesaurus.pdf">An
-			English language paper about OpenThesaurus (PDF, 266 KB)</a> is now available.
-			<br />Update 2004-06-13: the paper has been slightly updated.
-	</td>
-</tr>
-<tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2003-10-18</span></td>
+	<td valign="top" align="right" width="90"><span class="newsdate">2004-11-06</span></td>
 	<td valign="top">
-		OpenThesaurus wird jetzt
-		auch mit <a href="http://www.suse.de/de/private/products/suse_linux/i386/">Suse Linux 9.0</a>
-		mitgeliefert und automatisch 
-		zusammen mit OpenOffice.org installiert. Wer die aktuellste
-		OpenThesaurus-Version nutzen möchte, kann natürlich weiterhin die ZIP-Datei
-		von dieser Website runterladen und die vorhandenen Dateien
-		einfach überspielen. Damit man sehen kann, wieviel
-		geändert wurde, habe ich die Datenbank-Statistik verbessert:
-		Es wird jetzt angezeigt, wieviele Wörter in den letzten
-		7 Tagen hinzugefügt wurden.
+	Se ha incluido una nueva opci&oacute;n para el ingreso y edici&oacute;n de los sin&oacute;nimos. Junto a la opci&oacute;n 'figurado' (palabras en sentido figurado) aparece ahora la opci&oacute;n 'NoRAE': Esto significa que ahora, luego de una encuesta, se puede advertir de que tal palabra no est&aacute; en el diccionario de la Real Academia. Esto ayuda a: <br>
+	* evitar borrar las palabras que ya est&aacute;n ingresadas<br>
+	* evitar borrar la que se agregar&aacute;n en el futuro<br>
+	* que el usuario final pueda elegir de utilizarlas o no.<br>
 	</td>
 </tr>
+
 <tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2003-09-26</span></td>
+	<td valign="top" align="right" width="90"><span class="newsdate">2005-01-17 TOP 10</span></td>
 	<td valign="top">
-		Als eingeloggter User
-		kann man ab jetzt in einer Synonymgruppe auf die
-		einzelnen Wörter klicken, um ihren Status auf z.B. 
-		"umgangssprachlich" zu setzen. Ab sofort sind diese
-		Informationen über die Benutzung von Wörtern auch Teil
-		des OpenOffice.org-Thesaurus.
+	01 12743 falcaraz@<br>
+	02 .6298 pealfa@<br>
+	03 .5244 ja.barcelona@<br>
+	04 .1819 admin<br>
+	05 .1351 ggabriel@<br>
+	06 .1140 trucas@<br>
+	07 .1091 abregoservicios@<br>
+	08 ..819 jorgemarsa@<br>
+	09 ..615 rvalencia@<br>
+	10 ..457 arego@<br>
 	</td>
 </tr>
+
 <tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2003-09-16</span></td>
+	<td valign="top" align="right" width="90"><span class="newsdate">2004-03-30 TOP 10</span></td>
 	<td valign="top">
-		Ab sofort kann man auch
-		nach flektierten Wörtern suchen. Zum Beispiel wird bei der Suche
-		nach <span class="bsp">gehst</span> oder <span class="bsp">ging</span>
-		jetzt automatisch eine Suche nach <span class="bsp">gehen</span>
-		vorgeschlagen.
+	2870 ja.barcelona@..le.es<br>
+	2648 pealfa@..hoo.es<br>
+	1680 falcaraz@..o.com<br>
+	1351 ggabriel@..ternet.com.uy<br>
+	1045 abregoservicios@..odigy.net.mx<br>
+	650 admin<br>
+	457 arego@..enoffice.org<br>
+	325 trucas@..percable.es<br>
+	280 juanrey@..icia.es<br>
+	245 rvalencia@..stmail.fm<br>
+	--- Otros usuarios: 451<br>
+	--- Actividad total: 12.002<br>
 	</td>
 </tr>
+
 <tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2003-09-12</span></td>
-	<td valign="top">
-		Das Suchen nach Wörtern sollte
-		jetzt auch funktionieren, wenn man Cookies deaktiviert hat. Meldet Euch, falls
-		das nicht klappt. (Nur zum Login sind weiter Cookies nötig.)
-	</td>
-</tr>
-<tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">2003-09-10</span></td>
-	<td valign="top">
-		Es ist jetzt kein Login als
-		"guest" mehr nötig, wenn man nur nach Begriffen suchen will. Wie
-		bisher muss man sich einloggen, um Begriffe einzufügen oder
-		zu löschen. Übrigens: unter <a href="prefs.php">Einstellungen</a> kann
-		man dann auch sein Passwort ändern und eine persönliche Statistik
-		der hinzugefügten/gelöschten Einträge abrufen.
-	</td>
-</tr>
-<tr>
-	<td valign="top" align="right" width="90"><span class="newsdate">März 2003</span></td>
-	<td valign="top">
-		OpenThesaurus geht online.
+	<td valign="top" align="right" width="90"><span class="newsdate">2004-05-22</span></td>
+	<td valign="top"> Se ha incluido para descargar (mas abajo) el archivo comprimido para tener habilitado la SEPARACION SILABICA en OpenOffice.org, con licencia LGPL, creada desde CERO por Marcelo Garrone con la ayuda de la lista de usuarios openoffice-es-diccionario. El anterior ten�a muchos errores.
 	</td>
 </tr>
 </table>
 
 <?php 
-include("../include/bottom.php"); 
+include("include/bottom.php"); 
 page_close();
 ?>

@@ -1,20 +1,20 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Auth"));
 $auth->login_if($auth->auth["uid"] == "nobody");
-include("../include/tool.php");
+include("include/tool.php");
 $db = new DB_Thesaurus;
 
-$title = _("Add another Synset");
+$title = T_("Add another Synset");
 $stop_robots = 1;
-include("../include/top.php");
+include("include/top.php");
 ?>
 
 <form action="do_add.php" method="post">
 
 <table border="0">
 <tr>
-	<td valign="top"><?php print _("Word&nbsp;(<a href='faq.php#grundform'>base&nbsp;form</a>)") ?>:</td>
+	<td valign="top"><?php print T_("Word&nbsp;(<a href='faq.php#grundform'>base&nbsp;form</a>)") ?>:</td>
 
 	<?php
 	if( getvar('id') ) {
@@ -33,25 +33,25 @@ include("../include/top.php");
 		<td valign="top"><input size="25" maxlength="50" type="text" name="word" value="<?php print escape(uservar('word')); ?>" /></td>
 		<td valign="top">
 			<?php if( ! getvar('id') ) { ?>
-				<?php print _("A new synset -- i.e. a new meaning -- will be started with this word.") ?>
+				<?php print T_("A new synset -- i.e. a new meaning -- will be started with this word.") ?>
 			<?php } ?>
 		</td>
 	<?php } ?>
 </tr>
 <!--
 <tr>
-	<td valign="top"><?php print _("in terms of:") ?></td>
+	<td valign="top"><?php print T_("in terms of:") ?></td>
 	<td valign="top"><input type="text" name="distinction" value=""></td>
 	<td valign="top">
-		<?php print _("Which of the possibly several meanings does this new meaning refer to?"); ?>
-		<?php print _("Example: <span class='bsp'>pawn</span> can be used in terms of <span class='bsp'>chessman</span>. You only have to fill out this field if the meaning isn't clear by looking at the word's synonyms.") ?>
+		<?php print T_("Which of the possibly several meanings does this new meaning refer to?"); ?>
+		<?php print T_("Example: <span class='bsp'>pawn</span> can be used in terms of <span class='bsp'>chessman</span>. You only have to fill out this field if the meaning isn't clear by looking at the word's synonyms.") ?>
 		</td>
 </tr>
 -->
 <tr>
-	<td valign="top"><?php print _("Subject:") ?></td>
+	<td valign="top"><?php print T_("Subject:") ?></td>
 	<td valign="top"><select name="subject_id">
-			<option value=""><?php print _("(none)") ?></option>
+			<option value=""><?php print T_("(none)") ?></option>
 			<?php
 			$query = sprintf("SELECT id, subject
 				FROM subjects
@@ -68,21 +68,21 @@ include("../include/top.php");
 			<?php } ?>
 		</select>
 	</td>
-	<td><?php print _("Which subject does the synset refer to?") ?></td>
+	<td><?php print T_("Which subject does the synset refer to?") ?></td>
 </tr>
 
 <tr><td>&nbsp;</td></tr>
 
 <tr>
 	<td></td>
-	<td><?php print "<input type=\"submit\" value=\"" . _("Send") . "\" />"; ?></td>
-	<td><?php print _("Synonyms may be added on the next page") ?></td>
+	<td><?php print "<input type=\"submit\" value=\"" . T_("Send") . "\" />"; ?></td>
+	<td><?php print T_("Synonyms may be added on the next page") ?></td>
 </tr>
 </table>
 
 </form>
 
 <?php
-include("../include/bottom.php");
+include("include/bottom.php");
 page_close();
 ?>

@@ -1,8 +1,8 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Auth"));
 $auth->login_if($auth->auth["uid"] == "nobody");
-include("../include/tool.php");
+include("include/tool.php");
 $db = new DB_Thesaurus;
 
 ### FIXME: more checks?
@@ -44,7 +44,7 @@ if( $remove == "ask" ) {
 		uservar('meaning_id'), uservar('meaning_id'));
 	$db->query($query);
 	if( $db->nf() > 0 ) {
-		print _("This synset cannot be deleted because it is a subordinate or superordinate synset for another synset.");
+		print T_("This synset cannot be deleted because it is a subordinate or superordinate synset for another synset.");
 		return;
 	}
 
@@ -150,7 +150,7 @@ if( trim(uservar('delete_super')) ) {
 
 	$id = uservar('super_id');
 	if( uservar('super_id') == "nothingselected" ) {
-		print _("Error: You did not select a superordinate conecpt. Please go back and select one of the given options.");
+		print T_("Error: You did not select a superordinate conecpt. Please go back and select one of the given options.");
 		return;
 	} else if( uservar('super_id') == "create" ) {
 		// create a new synset
@@ -185,7 +185,7 @@ while( list($key, $val) = each($_POST) ) {
 	
 }
 if( sizeof($del_list) >= sizeof(getSynset(uservar('meaning_id'))) ) {
-	print _("You cannot remove all synonyms of a synset. Use the checkbox to delete the synset instead.");
+	print T_("You cannot remove all synonyms of a synset. Use the checkbox to delete the synset instead.");
 	page_close();
 	return;
 }
@@ -205,16 +205,16 @@ foreach( $del_list as $id ) {
 }
 
 if( uservar('do_remove') == 1 ) {
-	$title = _("Synset removed");
-	include("../include/top.php");
+	$title = T_("Synset removed");
+	include("include/top.php");
 	?>
-	<p><?php print sprintf(_("The synset <span class='inp'>%s</span> has been deleted."), 
+	<p><?php print sprintf(T_("The synset <span class='inp'>%s</span> has been deleted."), 
 			join(', ', getSynset(uservar('meaning_id')))) ?></p>
 
-	<p><a href="./"><?php print _("Return to homepage") ?></a></p>
+	<p><a href="./"><?php print T_("Return to homepage") ?></a></p>
 
 	<?php
-	include("../include/bottom.php");
+	include("include/bottom.php");
 	page_close();
 	return;
 } else {

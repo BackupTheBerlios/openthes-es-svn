@@ -1,8 +1,8 @@
 <?php
-include("../../include/phplib/prepend.php3");
+include("../include/phplib/prepend.php3");
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Auth"));
 $db = new DB_Thesaurus;
-include("../../include/tool.php");
+include("../include/tool.php");
 
 if( $auth->auth['uname'] != 'admin' ) {
 	print "Access denied.";
@@ -10,7 +10,7 @@ if( $auth->auth['uname'] != 'admin' ) {
 }
 
 $title = "OpenThesaurus admin interface: find possible foreign words";
-include("../../include/top.php");
+include("../include/top.php");
 
 $i = 1;
 
@@ -44,11 +44,11 @@ while( $db->next_record() ) {
 	$i++;
 }
 
-print "<p><b>Words that begin with pre-/prä (but not prei-):</b></p>";
+print "<p><b>Words that begin with pre-/prï¿½ (but not prei-):</b></p>";
 $query = "SELECT * FROM words WHERE
 	(
 	word LIKE 'pre%' OR
-	word LIKE 'prä%'
+	word LIKE 'prï¿½%'
 	)
 	AND
 	word NOT LIKE 'prei%'";
@@ -67,6 +67,6 @@ while( $db->next_record() ) {
 	$i++;
 }
 
-include("../../include/bottom.php");
+include("../include/bottom.php");
 page_close();
 ?>

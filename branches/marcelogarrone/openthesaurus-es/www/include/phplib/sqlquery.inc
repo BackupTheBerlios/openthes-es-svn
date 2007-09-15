@@ -28,15 +28,15 @@ class Sql_Query {
   
   ## HTML Widget dictionary
   var $dict = array(
-    _("en") => array(
-      "searchfor" => _("Search for:"),
-      "and"       => _("and"),
-      "or"        => _("or"),
-      "like"      => _("contains"),
-      "reset"     => _("Reset Query"),
-      "submit"    => _("Submit Query"),
-      "less"      => _("Fewer"),
-      "more"      => _("More")
+    T_("en") => array(
+      "searchfor" => T_("Search for:"),
+      "and"       => T_("and"),
+      "or"        => T_("or"),
+      "like"      => T_("contains"),
+      "reset"     => T_("Reset Query"),
+      "submit"    => T_("Submit Query"),
+      "less"      => T_("Fewer"),
+      "more"      => T_("More")
     )
   );
 

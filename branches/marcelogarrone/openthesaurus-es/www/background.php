@@ -1,10 +1,10 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 $cancel_login = 1;
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Default_Auth"));
 $title = "OpenThesaurus Hintergrundinformation";
 $page = "background";
-include("../include/top.php");
+include("include/top.php");
 ?>
 
 <p>OpenThesaurus ist ein deutscher Thesaurus (Synonymwörterbuch) und ein
@@ -25,6 +25,6 @@ OpenThesaurus nicht alle von WordNet bekannten Beziehungen unterstützt.</p>
 <p>OpenThesaurus findet man auch auf <a href="http://sourceforge.net/projects/openthesaurus/">Sourceforge</a>.</p>
 
 <?php 
-include("../include/bottom.php"); 
+include("include/bottom.php"); 
 page_close();
 ?>

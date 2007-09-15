@@ -266,10 +266,10 @@
 	  */
 	function addSynset($db, $auth, $word, $subject_id, $distinction) {
 		if( strlen(trim($word)) < 1 ) {
-			print _("Error: word is too short.");
+			print T_("Error: word is too short.");
 			return -1;
 		} else if( strlen(trim($word)) > 50 ) {
-			print _("Error: word is too long.");
+			print T_("Error: word is too long.");
 			return -1;
 		}
 
@@ -363,12 +363,12 @@
 	
 	// Show links to Google etc.:
 	function externalSearchLinks($word) {
-		$msg = sprintf(_("Search '%s' with Google"), escape($word));
-		$url = sprintf(_("http://www.google.de/search?q=%s&amp;lr=lang_de"), urlencode($word));
+		$msg = sprintf(T_("Search '%s' with Google"), escape($word));
+		$url = sprintf(T_("http://www.google.de/search?q=%s&amp;lr=lang_de"), urlencode($word));
 		print '<p><a accesskey="g" href="'.$url.'">'.$msg.'</a>';
 		print ' -- ';
-		$msg = sprintf(_("Search '%s' with Wikipedia"), escape($word));
-		$url = sprintf(_("http://www.google.de/search?q=site:de.wikipedia.org+%s"), urlencode($word));
+		$msg = sprintf(T_("Search '%s' with Wikipedia"), escape($word));
+		$url = sprintf(T_("http://www.google.de/search?q=site:de.wikipedia.org+%s"), urlencode($word));
 		print '<a accesskey="w" href="'.$url.'">'.$msg.'</a></p>';
 	}
 	
@@ -696,7 +696,7 @@
 		} elseif( $type == REMOVE_SYNSET ) {
 			$word = sprintf("<span class=\"removed\">%s</span> %s", $synset, $comment);
 		} elseif( $type == ADD_SYNSET ) {
-			$word = sprintf("<span class=\"added\">%s</span> [%s]", $word, _("new meaning"));
+			$word = sprintf("<span class=\"added\">%s</span> [%s]", $word, T_("new meaning"));
 		} elseif( $type == CHANGE_USAGE ) {
 			$comments = preg_split("/-&gt;/", $comment);
 			if( ! isset($comments[1]) ) {
@@ -708,27 +708,27 @@
 		} elseif( $type == DEL_SUPER && $admin ) {
 			$word = sprintf("%s is a <span class=\"removed\">%s</span>", $synset, $word);
 		} elseif( $type == DEL_SUPER ) {
-			$word = sprintf(_("Removed superordinate reference: <span class=\"removed\">%s</span>"), $word);
+			$word = sprintf(T_("Removed superordinate reference: <span class=\"removed\">%s</span>"), $word);
 		} elseif( $type == ADD_SUPER && $admin ) {
 			$word = sprintf("%s is a <span class=\"added\">%s</span>", $synset, $word);
 		} elseif( $type == ADD_SUPER ) {
-			$word = sprintf(_("Added superordinate reference: <span class=\"added\">%s</span>"), $word);
+			$word = sprintf(T_("Added superordinate reference: <span class=\"added\">%s</span>"), $word);
 		} elseif( $type == ADD_ANTONYM ) {
-			$word = sprintf(_("Added antonym relation: <span class=\"added\">%s</span>"), $comment);
+			$word = sprintf(T_("Added antonym relation: <span class=\"added\">%s</span>"), $comment);
 		} elseif( $type == CHANGE_ANTONYM ) {
-			$word = sprintf(_("Changed antonym relation: <span class=\"added\">%s</span>"), $comment);
+			$word = sprintf(T_("Changed antonym relation: <span class=\"added\">%s</span>"), $comment);
 		} elseif( $type == DEL_ANTONYM ) {
-			$word = sprintf(_("Deleted antonym relation: <span class=\"removed\">%s</span>"), $comment);
+			$word = sprintf(T_("Deleted antonym relation: <span class=\"removed\">%s</span>"), $comment);
 		} elseif( $type == CHANGE_SUBJECT ) {
 			$comments = preg_split("/-&gt;/", $comment);
 			if ($comments[1] == '') {
-				$comments[1] = _("(none)");
+				$comments[1] = T_("(none)");
 			}
 			$synset_str = "";
 			if( $admin ) {
 				$synset_str = $word;
 			}
-			$word = sprintf(_("Change of subject:")." %s <span class=\"removed\">%s</span> &gt;&gt; <span class=\"added\">%s</span>",
+			$word = sprintf(T_("Change of subject:")." %s <span class=\"removed\">%s</span> &gt;&gt; <span class=\"added\">%s</span>",
 				$synset_str, $comments[0], $comments[1]);
 		} else {
 			$word = sprintf("??? Unknown action for <span class=\"inp\">%s</span>", $word);

@@ -1,15 +1,15 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 $db = new DB_Thesaurus;
-include("../include/tool.php");
+include("include/tool.php");
 
 if( ! emailOkay(uservar('email')) ) { 
-	print sprintf(_("Invalid email address '%s'."), escape(uservar('email')));
+	print sprintf(T_("Invalid email address '%s'."), escape(uservar('email')));
 	return;
 }
 
-if( ! uservar('gpl') == "1" ) { 
-	print _("Error: the checkbox must be selected");
+if( ! uservar('lgpl') == "1" ) { 
+	print T_("Error: the checkbox must be selected");
 	return;
 }
 
@@ -27,10 +27,10 @@ if( $db->nf() == 1 ) {
 
 $username = uservar('email');
 $pwd = generatePassword(5);
-	
+
 $to = uservar('email');
 $from = "dontreply@" . DOMAIN;
-$subject = _("Registered on ") . DOMAIN;
+$subject = T_("Registered on ") . DOMAIN;
 $message = "\n".
 _("You have succesfully registered on "). HOMEPAGE . 
 "\n".
@@ -53,6 +53,7 @@ $query = sprintf("INSERT INTO auth_user
 $db->query($query);
 
 if( MAILING_LIST_SUBSCRIBE && uservar('list') == 1 ) {
+
 	$to = MAILING_LIST_SUBSCRIBE;
 	$from = uservar('email');
 	$subject = "subscribe";
@@ -78,12 +79,12 @@ function generatePassword($length) {
 	return $string;
 } 
 
-$title = _("Register");
-include("../include/top.php");
+$title = T_("Register");
+include("include/top.php");
 ?>
 
-<p><?php print sprintf(_("Thanks for registering. The password will be sent to <span class='inp'>%s</span>."), escape(uservar('email'))) ?></p>
+<p><?php print sprintf(T_("Thanks for registering. The password will be sent to <span class='inp'>%s</span>."), escape(uservar('email'))) ?></p>
 
-<p><a href="./"><?php print _("Back to homepage") ?></a></p>
+<p><a href="./"><?php print T_("Back to homepage") ?></a></p>
 
-<?php include("../include/bottom.php"); ?>
+<?php include("include/bottom.php"); ?>

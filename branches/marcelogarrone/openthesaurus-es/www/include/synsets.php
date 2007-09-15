@@ -36,11 +36,11 @@ $prev_mid = -1;
 $synmatches = 0;
 if ($db->nf() == 0) {
 	?>
-	<p class="firstcompact"><strong><?php print _("No exact matches in OpenThesaurus. Did you mean...") ?></strong></p>
+	<p class="firstcompact"><strong><?php print T_("No exact matches in OpenThesaurus. Did you mean...") ?></strong></p>
 	<?php
 } else {
 	?>
-	<p class="firstcompact"><strong><?php print _("Synsets:") ?></strong></p>
+	<p class="firstcompact"><strong><?php print T_("Synsets:") ?></strong></p>
 	<ul class="compact">
 	<?php
 }
@@ -84,7 +84,7 @@ while( $db->next_record() ) {
 		print $url_suffix ?>"><?php print $synset_str." ".$subject_str ?></a>
 		<?php if (SUPERSETS_IN_OVERVIEW && $db->f('super_id')) { ?>
 			<br />
-			<span class="supersynsethead"><?php print _("Superordinate synset") ?>:</span>
+			<span class="supersynsethead"><?php print T_("Superordinate synset") ?>:</span>
 				<span class="supersynset"><?php print join(getSynsetWithUsage($db->f('super_id'), 1, 3), ", ") ?></span>
 		<?php } ?>
 		</li>

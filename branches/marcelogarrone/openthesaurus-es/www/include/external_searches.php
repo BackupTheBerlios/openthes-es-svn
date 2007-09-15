@@ -1,19 +1,12 @@
 <?php
 $word = $_GET['word'];
 ?>
-<p class="compact"><strong><?php print sprintf(_("Search '<span class=\"inp\">%s</span>' using :"), escape($word)); ?></strong></p>
+<p class="compact"><strong><?php print sprintf(T_("Search '<span class=\"inp\">%s</span>' using :"), escape($word)); ?></strong></p>
 
 <ul class="compact">
-	<li><a href="<?php print sprintf("http://de.wikipedia.org/wiki/Spezial:Search?search=%s&amp;go=Eintrag", urlencode($word)); ?>">Wikipedia</a>
-		(<a href="<?php print sprintf("http://www.google.de/search?q=site:de.wikipedia.org+%s", urlencode($word)); ?>">via Google</a>)</li>
-	<li><a href="<?php print sprintf("http://de.wiktionary.org/wiki/Spezial:Search?search=%s&amp;go=Eintrag", urlencode($word)); ?>">Wiktionary</a>
-		(<a href="<?php print sprintf("http://www.google.de/search?q=site:de.wiktionary.org+%s", urlencode($word)); ?>">via Google</a>)</li>
-	<li><a href="<?php print sprintf("http://www.canoo.net/services/Controller?input=%s&amp;service=inflection",
-		urlencode(iconv("utf8", "latin1", $word))); ?>">Flexion auf Canoo.net</a></li>
-	<li><a href="<?php print sprintf("http://www.google.de/search?q=%s&amp;lr=lang_de", urlencode($word)); ?>">Google</a></li>
-	<li>Deutsch/Englisch-W&ouml;rterb&uuml;cher:
-		<a href="<?php print sprintf("http://dict.tu-chemnitz.de/dings.cgi?lang=de&amp;".
-			"noframes=1&amp;service=&amp;query=%s&amp;optword=1&amp;optcase=1&amp;opterrors=0&amp;optpro=0&amp;style=&amp;dlink=self",
-			urlencode(iconv("utf8", "latin1", $word))); ?>">dict.tu-chemnitz.de</a> -- 
-		<a href="<?php print sprintf("http://www.dict.cc/?s=%s", urlencode($word)); ?>">dict.cc</a></li>
+	<li><a href="<?php print sprintf("http://es.wikipedia.org/wiki/Especial:Search?search=%s&amp;go=Buscar", urlencode($word)); ?>">Wikipedia</a>
+		(<a href="<?php print sprintf("http://www.google.com.uy/search?q=site:es.wikipedia.org+%s", urlencode($word)); ?>">via Google</a>)</li>
+	<li><a href="<?php print sprintf("http://es.wiktionary.org/wiki/Especial:Search?search=%s&amp;go=Buscar", urlencode($word)); ?>">Wiktionary</a>
+		(<a href="<?php print sprintf("http://www.google.com.uy/search?q=site:es.wiktionary.org+%s", urlencode($word)); ?>">via Google</a>)</li>
+	<li><a href="<?php print sprintf("http://www.google.com.uy/search?q=%s&amp;lr=lang_es", urlencode($word)); ?>">Google</a></li>	
 </ul>

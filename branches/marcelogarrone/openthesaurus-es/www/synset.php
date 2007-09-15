@@ -1,8 +1,8 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 $cancel_login = 1;
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Default_Auth"));
-include("../include/tool.php");
+include("include/tool.php");
 $db = new DB_Thesaurus;
 $inner_db = new DB_Thesaurus;
 
@@ -82,7 +82,7 @@ if( intval($db->f('hidden')) == 1 ) {
 
 $subject = getSubject($meaning_id);
 
-$title = sprintf(_("Synset '%s'"), getSynsetString($meaning_id, 3));
+$title = sprintf(T_("Synset '%s'"), getSynsetString($meaning_id, 3));
 
 $query = sprintf("SELECT words.id AS id, word_meanings.id AS wmid,
 	word, meaning_id, word_meanings.use_id, uses.name
@@ -93,18 +93,18 @@ $query = sprintf("SELECT words.id AS id, word_meanings.id AS wmid,
 	ORDER BY meaning_id, word", $meaning_id);
 $db->query($query);
 
-include("../include/top.php");
+include("include/top.php");
 ?>
 
 <?php 
 if( uservar('changed') == 1 ) { ?>
-	<p class="okay"><?php print _("Modification saved.") ?></p>
+	<p class="okay"><?php print T_("Modification saved.") ?></p>
 <?php } else if( uservar('changed') == 2 ) { ?>
-	<p class="okay"><?php print _("Synset successfully created.") ?></p>
+	<p class="okay"><?php print T_("Synset successfully created.") ?></p>
 <?php } ?>
 
 <?php if( isset($auth) && array_key_exists('uname', $auth->auth) ) { ?>
-	<a href="synset_detail.php?mid=<?php print $meaning_id ?>"><?php print _("Details") ?></a>
+	<a href="synset_detail.php?mid=<?php print $meaning_id ?>"><?php print T_("Details") ?></a>
 <?php } ?>
 
 <form action="do_save.php" method="post">
@@ -123,7 +123,7 @@ while( $db->next_record() ) {
 		if( $hidden ) { ?>
 			<tr>
 				<td colspan="4"><strong>
-					<?php print _("This synset was deleted.") ?></strong></td>
+					<?php print T_("This synset was deleted.") ?></strong></td>
 			</tr>
 		<?php
 		}
@@ -134,13 +134,13 @@ while( $db->next_record() ) {
 					<h3>[<?php print $subject ?>]</h3>
 				<?php } ?>
 				<?php if( $distinction ) { ?>
-					<h3><?php print _("in terms of") ?> <span class="inp"><?php print $distinction ?></span></h3>
+					<h3><?php print T_("in terms of") ?> <span class="inp"><?php print $distinction ?></span></h3>
 				<?php } ?>
 			</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td><?php print _("Synset") ?><sup><a href="faq.php#syn">?</a></sup>:</td>
+			<td><?php print T_("Synset") ?><sup><a href="faq.php#syn">?</a></sup>:</td>
 			<td></td>
 		</tr>
 	<?php
@@ -194,7 +194,7 @@ while( $db->next_record() ) {
 				$inner_db->query($inner_query);
 				if( $inner_db->nf() > 1 || ($hidden && $inner_db->nf() == 1) ) {
 					?>
-					<?php print "<a title=\"".sprintf(_("show all %d meanings of this word"), $inner_db->nf()) ?>" href="<?php print DEFAULT_SEARCH ?>?word=<?php print urlencode($orig_word) ?>">(<?php print $inner_db->nf(); ?>)</a>
+					<?php print "<a title=\"".sprintf(T_("show all %d meanings of this word"), $inner_db->nf()) ?>" href="<?php print DEFAULT_SEARCH ?>?word=<?php print urlencode($orig_word) ?>">(<?php print $inner_db->nf(); ?>)</a>
 					<?php
 				} ?>
 
@@ -204,7 +204,7 @@ while( $db->next_record() ) {
 					list($antonym_mid, $antonym_word) = $antonym_array;
 					$antonym_defined = 1;
 					?>
-					&lt;<?php print _("Antonym:")." <a href=\"synset.php?id=".$antonym_mid."\">".$antonym_word ?></a>&gt;
+					&lt;<?php print T_("Antonym:")." <a href=\"synset.php?id=".$antonym_mid."\">".$antonym_word ?></a>&gt;
 					<?php
 				}
 				?>
@@ -219,10 +219,10 @@ while( $db->next_record() ) {
 				_("n/a") ?></label></span>
 			&nbsp;
 			<span class="myhover"><input id="<?php print "del$i" ?>" type="radio" name="word_<?php print $db->f('id') ?>" 
-				value="delete" /><label for="<?php print "del$i" ?>"><?php print _("remove word from synset") ?></label></span>
+				value="delete" /><label for="<?php print "del$i" ?>"><?php print T_("remove word from synset") ?></label></span>
 			<? if( strpos(DEFAULT_SEARCH, "synset") === false ) { ?>
 				&nbsp;
-				<a href="overview.php?word=<?php print urlencode($orig_word) ?>"><?php print _("search word") ?></a>
+				<a href="overview.php?word=<?php print urlencode($orig_word) ?>"><?php print T_("search word") ?></a>
 			<?php } ?>
 			</td>
 		<?php } ?>
@@ -265,7 +265,7 @@ while( $db->next_record() ) {
 				&nbsp;
 			<?php } ?>
 		<?php } else { ?>
-			<?php print _("(maximum number of synonyms reached)") ?>
+			<?php print T_("(maximum number of synonyms reached)") ?>
 		<?php } ?>
 		</td>
 	</tr>
@@ -282,7 +282,7 @@ while( $db->next_record() ) {
 		<td></td>
 		<td colspan="3" bgcolor="#dddddd">
 		<?php 
-		print _("Superordinate und subordinate synsets (<a href=\"faq.php#hierarchie\">Help</a>):<br />");
+		print T_("Superordinate und subordinate synsets (<a href=\"faq.php#hierarchie\">Help</a>):<br />");
 		?></td>
 	</tr>
 	<tr>
@@ -291,15 +291,15 @@ while( $db->next_record() ) {
 		<?php 
 		$max_synset_size = 3;	# don't display more words than this
 		if( $meaning_id == TOP_SYNSET_ID || $meaning_id == TOP_SYNSET_ID_VERB ) {
-			print _("This is the top superordinate synset.");
+			print T_("This is the top superordinate synset.");
 		} else if( $super_id ) {
-			print _("Superordinate concept:");
+			print T_("Superordinate concept:");
 			print " <a href=\"synset.php?id=".intval($super_id)."\">".join(', ', getSynsetWithUsage($super_id, 1, $max_synset_size))."</a>";
-			print " (<label class=\"myhover\"><input type=\"checkbox\" name=\"delete_super\" value=\"1\"/>"._("delete reference").")</label>";
+			print " (<label class=\"myhover\"><input type=\"checkbox\" name=\"delete_super\" value=\"1\"/>".T_("delete reference").")</label>";
 			$can_delete = 0;
 			$super_defined = 1;
 		} else {
-			print _("No superordinate concept defined yet for this synset. Set one now:");
+			print T_("No superordinate concept defined yet for this synset. Set one now:");
 			?>
 			<input accesskey="o" type="text" name="super_new" value="" />
 			<?php
@@ -316,12 +316,12 @@ while( $db->next_record() ) {
 			array_push($subsets, '<a href="synset.php?id='.$db->f('id').'">'.join(', ', getSynset($db->f('id'), $max_synset_size)).'</a>');
 		}
 		if( sizeof($subsets) > 0 ) {
-			print _("Subordinate concepts:")." ";
+			print T_("Subordinate concepts:")." ";
 			print join(' -- ', $subsets);
 			$can_delete = 0;
 			$sub_defined = 1;
 		} else {
-			print _("There are no subordinate concepts yet for this synset.");
+			print T_("There are no subordinate concepts yet for this synset.");
 		}
 		?>
 		</td>
@@ -331,7 +331,7 @@ while( $db->next_record() ) {
 			<td></td>
 			<td colspan="3" bgcolor="#dddddd">
 				<a href="tree.php?id=<?php print $meaning_id ?>#position"><img 
-					src="images/tree.png" border="0" alt="Tree" width="11" height="16" />&nbsp;<?php print _("Show in tree view") ?></a></td>
+					src="images/tree.png" border="0" alt="Tree" width="11" height="16" />&nbsp;<?php print T_("Show in tree view") ?></a></td>
 		</tr>
 	<?php } ?>
 	<?php } ?>
@@ -340,9 +340,9 @@ while( $db->next_record() ) {
 		<td></td>
 		<td colspan="3">
 		<?php if( $can_delete ) { ?>
-			<span class="myhover"><input accesskey="x" id="delsyn" type="checkbox" name="remove" value="1" /><label for="delsyn"><?php print sprintf(_("Remove the synset '%s'"), join(', ', $synset_org)) ?></label></span>
+			<span class="myhover"><input accesskey="x" id="delsyn" type="checkbox" name="remove" value="1" /><label for="delsyn"><?php print sprintf(T_("Remove the synset '%s'"), join(', ', $synset_org)) ?></label></span>
 		<?php } else {
-			print "<span class=\"inactive\">"._("This synset cannot be deleted because it is a subordinate or superordinate synset for another synset.")."</span>";
+			print "<span class=\"inactive\">".T_("This synset cannot be deleted because it is a subordinate or superordinate synset for another synset.")."</span>";
 		} ?>
 		</td>
 	</tr>
@@ -355,13 +355,13 @@ while( $db->next_record() ) {
 			<table border="0" width="550">
 			<tr>
 				<td><img src="images/warning.png" alt="Warning" width="33" height="30" /></td>
-				<td><?php print _("This synset has only one word and no superordinate concept. Please add a synonym, set a superordinate concept, or delete this synset.") ?></td>
+				<td><?php print T_("This synset has only one word and no superordinate concept. Please add a synonym, set a superordinate concept, or delete this synset.") ?></td>
 			</tr>
 			</table>
 		<?php }	?>
 		</td>
 		<?php if( ! $hidden ) { ?>
-			<td align="right"><?php print "<input accesskey=\"a\" type=\"submit\" value=\"" . _("Modify") . "\" />" ?> <sup><a href="faq.php#korr">?</a></sup></td>
+			<td align="right"><?php print "<input accesskey=\"a\" type=\"submit\" value=\"" . T_("Modify") . "\" />" ?> <sup><a href="faq.php#korr">?</a></sup></td>
 		<?php } ?>	
 	</tr>
 
@@ -370,9 +370,9 @@ while( $db->next_record() ) {
 
 <tr>
 	<td></td>
-	<td colspan="3"><?php print _("Latest three modifications in this synset") ?>
-		(<span class="added"><?php print _("added") ?></span>,
-		<span class="removed"><?php print _("removed") ?></span>):</td>
+	<td colspan="3"><?php print T_("Latest three modifications in this synset") ?>
+		(<span class="added"><?php print T_("added") ?></span>,
+		<span class="removed"><?php print T_("removed") ?></span>):</td>
 </tr>
 
 <tr>
@@ -393,7 +393,7 @@ while( $db->next_record() ) {
 		$db->query($query);
 		if( $db->nf() == 0 ) { ?>
 			<tr>
-				<td colspan="3"><?php print _("(no modifications so far)") ?></td>
+				<td colspan="3"><?php print T_("(no modifications so far)") ?></td>
 			</tr>
 		<?php } ?>
 		<?php
@@ -434,7 +434,7 @@ while( $db->next_record() ) {
 <?php if( array_key_exists('word', $_GET) ) { ?>
 	<tr>
 		<td></td>
-		<td colspan="3"><a href="add.php?word=<?php print $_GET['word']; ?>"><?php print sprintf(_("Add another meaning of '%s' to the thesaurus"), escape($_GET['word'])) ?></a></td>
+		<td colspan="3"><a href="add.php?word=<?php print $_GET['word']; ?>"><?php print sprintf(T_("Add another meaning of '%s' to the thesaurus"), escape($_GET['word'])) ?></a></td>
 	</tr>
 <?php } ?>
 
@@ -447,6 +447,6 @@ if( isset($_GET['word']) ) {
 	logSearch($db, $_GET['word'], $matches_for_log, 0, getEndTimer());
 }
 
-include("../include/bottom.php");
+include("include/bottom.php");
 page_close();
 ?>

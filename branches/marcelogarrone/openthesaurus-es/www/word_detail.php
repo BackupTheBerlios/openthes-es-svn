@@ -1,8 +1,8 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 $cancel_login = 1;
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Default_Auth"));
-require_once("../include/tool.php");
+require_once("include/tool.php");
 if (!WORD_DETAIL_WITHOUT_AUTH && $auth->auth["uid"] == "nobody") {
 	$auth->login_if(true);
 	return;
@@ -70,7 +70,7 @@ if( uservar('do_save') == 1 ) {
 
 	if( isset($_POST['new_antonym_wmid']) ) {
 		if (uservar("wmid") == uservar("new_antonym_wmid")) {
-			$error = _("A word cannot be an antonym of itself");
+			$error = T_("A word cannot be an antonym of itself");
 		} else {
 			setNewAntonym(uservar("wmid"), uservar("new_antonym_wmid"));
 		}
@@ -93,12 +93,12 @@ if( uservar('do_save') == 1 ) {
 					word = '%s'", myaddslashes(uservar('antonym')));
 			$db->query($query);
 			if ($db->nf() == 0) {
-				$error = _("This word doesn't exist. Please create a new synonym group with this word first.");
+				$error = T_("This word doesn't exist. Please create a new synonym group with this word first.");
 			} else if ($db->nf() == 1) {
 				$db->next_record();
 				$new_wmid = $db->f('wmid');
 				if ($new_wmid == uservar('wmid')) {
-					$error = _("A word cannot be an antonym of itself");
+					$error = T_("A word cannot be an antonym of itself");
 				} else {
 					setNewAntonym(uservar('wmid'), $new_wmid);
 				}
@@ -123,7 +123,7 @@ if( uservar('do_save') == 1 ) {
 	}
 }
 
-$title = sprintf(_("Details for word '%s'"), $word);
+$title = sprintf(T_("Details for word '%s'"), $word);
 
 function getAntonymWord($id, $db) {
 	$query = sprintf("SELECT word, word_meanings.meaning_id AS mid FROM antonyms, word_meanings, words WHERE
@@ -150,7 +150,7 @@ function setNewAntonym($thisWMID, $newWMID) {
 			myaddslashes($newWMID), myaddslashes($newWMID));
 		$db->query($query);
 		if( $db->nf() > 0 ) {
-			print _("Error: the antonym you selected is already connected to a different word.");
+			print T_("Error: the antonym you selected is already connected to a different word.");
 			exit;
 		}
 		$query = sprintf("INSERT INTO antonyms (id, word_meaning_id1, word_meaning_id2)
@@ -226,7 +226,7 @@ function printUsage() {
 	print $first;
 }
 
-include("../include/top.php");
+include("include/top.php");
 ?>
 
 <form action="word_detail.php" method="post">
@@ -235,15 +235,15 @@ include("../include/top.php");
 
 <table border="0" cellpadding="4" cellspacing="0">
 <tr>
-	<td width="15%"><strong><?php print _("Synset:") ?></strong></td>
+	<td width="15%"><strong><?php print T_("Synset:") ?></strong></td>
 	<td><?php print getSynsetString($meaning_id); ?></td>
 </tr>
 <tr>
-	<td><strong><?php print _("Word:") ?></strong></td>
+	<td><strong><?php print T_("Word:") ?></strong></td>
 	<td><?php print $word; ?></td>
 </tr>
 <tr>
-	<td valign="top"><strong><?php print _("Word forms:") ?></strong></td>
+	<td valign="top"><strong><?php print T_("Word forms:") ?></strong></td>
 	<td valign="top"><?php
 	$forms = join(", ", getWordForms($db, $word));
 	if ($forms == "") {
@@ -254,7 +254,7 @@ include("../include/top.php");
 	?></td>
 </tr>
 <tr>
-	<td valign="top"><strong><?php print _("Word usage in this synset:") ?></strong></td>
+	<td valign="top"><strong><?php print T_("Word usage in this synset:") ?></strong></td>
 	<td valign="top">
 		<?php
 		if ( $auth->auth["uid"] == "nobody"	) {
@@ -266,7 +266,7 @@ include("../include/top.php");
 	</td>
 </tr>
 <tr>
-	<td valign="top"><strong><?php print _("Antonym:") ?></strong></td>
+	<td valign="top"><strong><?php print T_("Antonym:") ?></strong></td>
 	<td>
 	<?php
 	$antonym_array = getAntonym($db, uservar('wmid'));
@@ -278,7 +278,7 @@ include("../include/top.php");
 		$antonym_word = escape($_POST['antonym']);
 	}
 	if( $disambiguate != "" ) {
-		print "<span class=\"error\">"._("Please disambiguate your input:")."</span><br /><br />";
+		print "<span class=\"error\">".T_("Please disambiguate your input:")."</span><br /><br />";
 		print $disambiguate;
 	} else if( $antonym_word != "" ) {
 		if ( $auth->auth["uid"] == "nobody"	) {
@@ -315,19 +315,19 @@ include("../include/top.php");
 	<td></td>
 	<td><?php
 	if ( $auth->auth["uid"] != "nobody"	) {
-		print "<input type=\"submit\" value=\"" . _("Modify") . "\" />";
+		print "<input type=\"submit\" value=\"" . T_("Modify") . "\" />";
 	} ?></td>
 </tr>
 </table>
 
 </form>
 
-<p><a href="synset.php?id=<?php print $meaning_id ?>"><?php print _("Back to synset") ?></a></p>
+<p><a href="synset.php?id=<?php print $meaning_id ?>"><?php print T_("Back to synset") ?></a></p>
 
 <?php 
 $_GET['word'] = $word;
-include("../include/external_searches.php"); 
+include("include/external_searches.php"); 
 
-include("../include/bottom.php");
+include("include/bottom.php");
 page_close();
 ?>

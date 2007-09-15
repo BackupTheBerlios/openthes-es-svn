@@ -1,8 +1,8 @@
 <?php
-include("../include/phplib/prepend.php3");
+include("include/phplib/prepend.php3");
 $cancel_login = 1;
 page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Default_Auth"));
-include("../include/tool.php");
+include("include/tool.php");
 $db = new DB_Thesaurus;
 
 $from = 0;
@@ -17,12 +17,12 @@ if( $to > $totalcount ) {
 	$to = $totalcount;
 }
 
-$title = sprintf(_("No Substring  Matches for '%s'"), escape($_GET['word']));
+$title = sprintf(T_("No Substring  Matches for '%s'"), escape($_GET['word']));
 if( sizeof($results) > 0 ) {
-	$title = sprintf(_("Substring Matches for '%s'"), escape($_GET['word']));
+	$title = sprintf(T_("Substring Matches for '%s'"), escape($_GET['word']));
 }
 $stop_robots = 1;
-include("../include/top.php");
+include("include/top.php");
 ?>
 
 <?php
@@ -31,7 +31,7 @@ $user_word = trim(escape($_GET['word']));
 if( sizeof($results) == 0 ) { ?>
 	<?php 
 	if( strpos($user_word, "*") !== false || strpos($user_word, "%") !== false ) {
-		print '<p>'._("Note that search operators like <span class='inp'>*</span> or <span class='inp'>%</span> are not supported.").'</p>';
+		print '<p>'.T_("Note that search operators like <span class='inp'>*</span> or <span class='inp'>%</span> are not supported.").'</p>';
 	} 
 } ?>
 
@@ -45,14 +45,14 @@ if( sizeof($results) == 0 ) { ?>
 		<input type="hidden" name="search" value="1" />
 		<table border="0">
 		<tr>
-			<td><strong><?php print _("New search") ?>:</strong></td>
+			<td><strong><?php print T_("New search") ?>:</strong></td>
 			<td><input type="text" size="18" name="word" value="<?php print escape($_GET['word']) ?>" /></td>
-			<td><?php print "<input type='submit' value='" . _("Search") . "' />" ?></td>
+			<td><?php print "<input type='submit' value='" . T_("Search") . "' />" ?></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td colspan="2"><input checked="checked" type="checkbox" name="substring" />
-				<?php print _("Find substrings") ?></td>
+				<?php print T_("Find substrings") ?></td>
 		</tr>
 		</table>
 	</form>
@@ -63,19 +63,19 @@ if( sizeof($results) == 0 ) { ?>
 // =================== Substring Matches ======================================
 ?>
 
-	<p><?php print sprintf(_("Matches <b>%d</b> to <b>%d</b> of <b>%d</b>:"), $from+1, $to, $totalcount); ?>
+	<p><?php print sprintf(T_("Matches <b>%d</b> to <b>%d</b> of <b>%d</b>:"), $from+1, $to, $totalcount); ?>
 
 	<p>
 	<?php $url = "substring_search.php?word=".urlencode($_GET['word']);
 	if( $from > 1 ) { ?>
-		<a href="<?php print $url."&amp;from=".($from-$limit) ?>"><?php print _("&lt;&lt; previous") ?></a> &nbsp;&nbsp;
+		<a href="<?php print $url."&amp;from=".($from-$limit) ?>"><?php print T_("&lt;&lt; previous") ?></a> &nbsp;&nbsp;
 	<?php } else {?>
-		<span class="inactive"><?php print _("&lt;&lt; previous") ?></span> &nbsp;&nbsp;
+		<span class="inactive"><?php print T_("&lt;&lt; previous") ?></span> &nbsp;&nbsp;
 	<?php } ?>
 	<?php if( $to < $totalcount ) { ?>
-		<a href="<?php print $url."&amp;from=".$to ?>"><?php print _(" next &gt;&gt;") ?></a>
+		<a href="<?php print $url."&amp;from=".$to ?>"><?php print T_(" next &gt;&gt;") ?></a>
 	<?php } else { ?>
-		<span class="inactive"><?php print _(" next &gt;&gt;") ?></span> &nbsp;&nbsp;
+		<span class="inactive"><?php print T_(" next &gt;&gt;") ?></span> &nbsp;&nbsp;
 	<?php } ?>
 	</p>
 
@@ -95,14 +95,14 @@ if( sizeof($results) == 0 ) { ?>
 	<p>
 	<!-- copied from above: -->
 	<?php if( $from > 1 ) { ?>
-		<a href="<?php print $url."&amp;from=".($from-$limit) ?>"><?php print _("&lt;&lt; previous") ?></a> &nbsp;&nbsp;
+		<a href="<?php print $url."&amp;from=".($from-$limit) ?>"><?php print T_("&lt;&lt; previous") ?></a> &nbsp;&nbsp;
 	<?php } else {?>
-		<span class="inactive"><?php print _("&lt;&lt; previous") ?></span> &nbsp;&nbsp;
+		<span class="inactive"><?php print T_("&lt;&lt; previous") ?></span> &nbsp;&nbsp;
 	<?php } ?>
 	<?php if( $to < $totalcount ) { ?>
-		<a href="<?php print $url."&amp;from=".$to ?>"><?php print _(" next &gt;&gt;") ?></a>
+		<a href="<?php print $url."&amp;from=".$to ?>"><?php print T_(" next &gt;&gt;") ?></a>
 	<?php } else { ?>
-		<span class="inactive"><?php print _(" next &gt;&gt;") ?></span> &nbsp;&nbsp;
+		<span class="inactive"><?php print T_(" next &gt;&gt;") ?></span> &nbsp;&nbsp;
 	<?php } ?>
 	</p>
 	<!-- end of copy -->
@@ -111,7 +111,7 @@ if( sizeof($results) == 0 ) { ?>
 
 <?php
 if( uservar('word') ) { ?>
-	<a href="add.php?word=<?php print urlencode($_GET['word'])?>"><?php print sprintf(_("Add '%s' to the thesaurus"), escape($_GET['word'])) ?></a>
+	<a href="add.php?word=<?php print urlencode($_GET['word'])?>"><?php print sprintf(T_("Add '%s' to the thesaurus"), escape($_GET['word'])) ?></a>
 <?php } ?>
 
 <script type="text/javascript">
@@ -127,6 +127,6 @@ if( uservar('word') ) { ?>
 externalSearchLinks($_GET['word']);
 
 logSearch($db, $_GET['word'], sizeof($results), 1, getEndTimer());
-include("../include/bottom.php");
+include("include/bottom.php");
 page_close();
 ?>

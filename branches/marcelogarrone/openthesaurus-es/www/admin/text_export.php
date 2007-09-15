@@ -1,12 +1,12 @@
 <?php
-if( ! (getenv('REMOTE_ADDR') == getenv('SERVER_ADDR')) ) {
-	print "Access from your host is denied.";
-	return;
-}
+// if( ! (getenv('REMOTE_ADDR') == getenv('SERVER_ADDR')) ) {
+// 	print "Access from your host is denied.";
+// 	return;
+// }
 
-include("../../include/phplib/prepend.php3");
+include("../include/phplib/prepend.php3");
 $db = new DB_Thesaurus;
-include("../../include/tool.php");
+include("../include/tool.php");
 
 $hp = HOMEPAGE;
 $copyright = COPYRIGHT;
@@ -43,13 +43,13 @@ foreach( $lines as $line ) {
 	fwrite($fh, $line."\n");
 }
 fclose($fh);
+// $cmd = "cd ../download && /bin/tar -czvf ./$target.tar.gz ./COPYING ./$target";
+// $cmd = "/usr/bin/gzip ../download/$target -c >../download/$target.gz";
+// print "Calling '$cmd'...<br>\n";
+// system($cmd);
+//unlink("../download/" . $target);
 
-$cmd = "/usr/bin/gzip ../download/$target -c >../download/$target.gz";
-print "Calling '$cmd'...<br>\n";
-system($cmd);
-unlink("../download/" . $target);
-
-print "Done. File is at <a href=\"../download/$target.gz\">$target.gz</a><br>\n";
+print "Done. File is at <a href=\"../download/$target.tar.bz2\">$target.tar.bz2</a><br>\n";
 
 page_close();
 ?>
