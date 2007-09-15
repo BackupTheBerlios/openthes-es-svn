@@ -8,5 +8,12 @@
 #
 # "ALL" or "DEFAULT" can be used in place of the regular expression.
 #
+# format strings are replaceed as follows:
+#    %c = canonical name of the command being executed
+#    %R = the name of the referrer, if any, otherwise the value NONE
+#    %p = path relative to repository
+#    %r = repository (path portion of $CVSROOT)
+#    %s = user to notify
+#
 # For example:
-#ALL mail -s "CVS notification" %s
+#ALL (echo Committed to %r/%p; cat) |mail %s -s "CVS notification"
