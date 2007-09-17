@@ -50,14 +50,14 @@
 	<br />
 	
 	<?php
-	$filename = TARGET_DOWNLOAD_DIR . "openthesaurus-es_dump.sql";
+	$filename = TARGET_DOWNLOAD_DIR . "openthesaurus-es_dump.sql.tar.bz2";
 	$fp = fopen($filename, "r");
 	$s_array = fstat($fp);
 	fclose($fp);
 	$date = date(TIMEFORMAT_SHORT, $s_array["mtime"]);
 	$size = sprintf("%.0f", $s_array["size"]/1000);
 	?>
-	<a href="<?php print BASE_URL . "/download/" . "openthesaurus-es_dump.sql" ?>">Mysql Dump</a>
+	<a href="<?php print BASE_URL . "/download/" . "openthesaurus-es_dump.sql.tar.bz2" ?>">Mysql Dump</a>
 		(<?php print $size ?> KB, <?php print $date ?>)
 	<br />
 
