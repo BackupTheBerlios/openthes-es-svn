@@ -205,6 +205,12 @@ if( WEB_LANG == 'de_DE' && array_key_exists('domainmove', $_GET) && $_GET['domai
 </tr>
 </table>
 
+<P align="right">
+<a href="http://developer.berlios.de" title="BerliOS Developer"> <img src="http://developer.berlios.de/bslogo.php?group_id=8872" width="124px" height="32px" border="0" alt="BerliOS Developer Logo"></a>
+
+<?php include("adsense2.php") ?>
+</P>
+
 <?php if (!(isset($disable_title) && $disable_title == 1)) { ?>
 	<h1><?php print $title ?></h1>
 <?php } ?>
