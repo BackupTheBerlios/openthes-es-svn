@@ -322,7 +322,7 @@ msgstr "Palabra&nbsp;(<a href='faq.php#grundform'>formato</a>)"
 
 #: ../../../../add.php:36
 msgid "A new synset -- i.e. a new meaning -- will be started with this word."
-msgstr ""
+msgstr "Una nueva sinonimia -es decir un nuevo significado- ser&aacute; comenzar&aacute; con esta palabra."
 
 #
 #: ../../../../add.php:43 ../../../../synset_detail.php:124
@@ -347,7 +347,7 @@ msgstr "Tema:"
 
 #: ../../../../add.php:71
 msgid "Which subject does the synset refer to?"
-msgstr ""
+msgstr "A Cu&aacute;al tema se refiere la sinonimia?"
 
 #: ../../../../add.php:78 ../../../../get_comment.php:28
 msgid "Send"
