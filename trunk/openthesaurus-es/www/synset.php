@@ -5,7 +5,7 @@ page_open(array("sess" => "Thesaurus_Session", "auth" => "Thesaurus_Default_Auth
 include("include/tool.php");
 $db = new DB_Thesaurus;
 $inner_db = new DB_Thesaurus;
-
+$page = "synset";
 $meaning_id = 0;
 $super_id = 0;
 $matches_for_log = -1;
@@ -107,7 +107,7 @@ if( uservar('changed') == 1 ) { ?>
 	<a href="synset_detail.php?mid=<?php print $meaning_id ?>"><?php print T_("Details") ?></a>
 <?php } ?>
 
-<form action="do_save.php" method="post">
+<form action="do_save.php" method="post" name="f">
 <input type="hidden" name="meaning_id" value="<?php print $meaning_id ?>" />
 
 <table border="0" cellpadding="3" cellspacing="0">
@@ -242,7 +242,7 @@ while( $db->next_record() ) {
 	<tr>
 		<td></td>
 		<td bgcolor="#dddddd" colspan="3"><?php print 
-			_("Optional: Add one more word - <a href=\"faq.php#grundform\">base forms</a> only - to this synset:") ?><br />
+			T_("Optional: Add one more word - <a href=\"faq.php#grundform\">base forms</a> only - to this synset:") ?><br />
 		<?php if( sizeof($synset_org) <= MAX_WORDS_PER_SYNSET ) { ?>
 			<input accesskey="n" type="text" name="synonym_new" size="25" maxlength="50" />
 			<br />
@@ -274,67 +274,7 @@ while( $db->next_record() ) {
 	$can_delete = 1;
 	$super_defined = 0;
 	$sub_defined = 0;
-	if( ONTOLOGY ) { ?>
-	<tr>
-		<td></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" bgcolor="#dddddd">
-		<?php 
-		print T_("Superordinate und subordinate synsets (<a href=\"faq.php#hierarchie\">Help</a>):<br />");
-		?></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" bgcolor="#dddddd">
-		<?php 
-		$max_synset_size = 3;	# don't display more words than this
-		if( $meaning_id == TOP_SYNSET_ID || $meaning_id == TOP_SYNSET_ID_VERB ) {
-			print T_("This is the top superordinate synset.");
-		} else if( $super_id ) {
-			print T_("Superordinate concept:");
-			print " <a href=\"synset.php?id=".intval($super_id)."\">".join(', ', getSynsetWithUsage($super_id, 1, $max_synset_size))."</a>";
-			print " (<label class=\"myhover\"><input type=\"checkbox\" name=\"delete_super\" value=\"1\"/>".T_("delete reference").")</label>";
-			$can_delete = 0;
-			$super_defined = 1;
-		} else {
-			print T_("No superordinate concept defined yet for this synset. Set one now:");
-			?>
-			<input accesskey="o" type="text" name="super_new" value="" />
-			<?php
-		}
-		?>
-		<br />
-		<?php 
-		$query = sprintf("SELECT id
-			FROM meanings
-			WHERE super_id = %s", $meaning_id);
-		$db->query($query);
-		$subsets = array();
-		while( $db->next_record() ) {
-			array_push($subsets, '<a href="synset.php?id='.$db->f('id').'">'.join(', ', getSynset($db->f('id'), $max_synset_size)).'</a>');
-		}
-		if( sizeof($subsets) > 0 ) {
-			print T_("Subordinate concepts:")." ";
-			print join(' -- ', $subsets);
-			$can_delete = 0;
-			$sub_defined = 1;
-		} else {
-			print T_("There are no subordinate concepts yet for this synset.");
-		}
-		?>
-		</td>
-	</tr>
-	<?php if( $sub_defined || $super_defined ) { ?>
-		<tr>
-			<td></td>
-			<td colspan="3" bgcolor="#dddddd">
-				<a href="tree.php?id=<?php print $meaning_id ?>#position"><img 
-					src="images/tree.png" border="0" alt="Tree" width="11" height="16" />&nbsp;<?php print T_("Show in tree view") ?></a></td>
-		</tr>
-	<?php } ?>
-	<?php } ?>
+	?>
 
 	<tr>
 		<td></td>
@@ -441,6 +381,12 @@ while( $db->next_record() ) {
 </table>
 
 </form>
+
+<script type="text/javascript">
+<!--
+	document.f.synonym_new.focus();
+// -->
+</script>
 
 <?php
 if( isset($_GET['word']) ) {

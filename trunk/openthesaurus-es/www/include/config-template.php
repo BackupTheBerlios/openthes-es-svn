@@ -6,17 +6,18 @@ $htmlcharset = "iso-8859-1"; # set HTTP charset
 
 # local:
 $_PHPLIB = array();
-$_PHPLIB["libdir"] = "/home/groups/openthes-es/htdocs/include/phplib/";
+$_PHPLIB["libdir"] = "/srv/svn-openthes-es/trunk/openthesaurus-es/www/include/phplib/";
 
 define('BASE_URL', "");               # no trailing slash, "" if the site is in the root
+define('LOCALE_DIR', "/srv/svn-openthes-es/trunk/openthesaurus-es/www/include/locale");
+define('ROOT_DIR', "/srv/svn-openthes-es/trunk/openthesaurus-es/www");
 
 if (!defined('ADMIN_IP'))
 {
-define('DB_HOST', "db.berlios.de");
-define('DB_NAME', "opentheses");
-define('DB_USER', "opentheses");
+define('DB_HOST', "localhost");
+define('DB_NAME', "tesauro");
+define('DB_USER', "root");
 define('DB_PASSWORD', "");
-define('LOCALE_DIR', "/home/groups/openthes-es/htdocs/include/locale");
 # the server this script runs on:
 #define('ADMIN_IP', "123.123.123.123");
 
@@ -101,9 +102,9 @@ define('TARGET_DOWNLOAD', "download/");
 define('TARGET_DOWNLOAD_DIR', "download/");
 define('TARGET_KWORD', "Kword_thesaurus_es_ES.txt");
 define('TARGET_TEXT', "Thesaurus_es_ES.txt");
-define('TARGET_OOO', "OOo-thes_es_ES.zip");
-define('TARGET_OOO2', "OOo2-thes_es_ES.zip");
-define('TARGET_SOURCE', "openthesaurus-es_src.tar.gz");
+define('TARGET_OOO', "OOo-thes_es_ES.tar.bz2");
+define('TARGET_OOO2', "OOo2-thes_es_ES.tar.bz2");
+define('TARGET_SOURCE', "openthesaurus-es_src.tar.bz2");
 
 define('HIDDEN_SYNSETS', "-1");
 

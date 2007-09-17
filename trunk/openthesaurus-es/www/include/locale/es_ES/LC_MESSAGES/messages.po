@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-17 05:33-0300\n"
+"POT-Creation-Date: 2007-09-17 14:31-0300\n"
 "PO-Revision-Date: 2007-09-17 05:51-0300\n"
 "Last-Translator: Marcelo Garrone <marcelo.garrone@gmail.com>\n"
 "Language-Team:  <es@li.org>\n"
@@ -322,7 +322,9 @@ msgstr "Palabra&nbsp;(<a href='faq.php#grundform'>formato</a>)"
 
 #: ../../../../add.php:36
 msgid "A new synset -- i.e. a new meaning -- will be started with this word."
-msgstr "Una nueva sinonimia -es decir un nuevo significado- se comenzar&aacute; con esta palabra."
+msgstr ""
+"Una nueva sinonimia -es decir un nuevo significado- se comenzar&aacute; con "
+"esta palabra."
 
 #
 #: ../../../../add.php:43 ../../../../synset_detail.php:124
@@ -466,7 +468,7 @@ msgstr ""
 msgid "A password reminder will soon be sent to your email address."
 msgstr ""
 
-#: ../../../../do_save.php:47 ../../../../synset.php:345
+#: ../../../../do_save.php:47 ../../../../synset.php:285
 msgid ""
 "This synset cannot be deleted because it is a subordinate or superordinate "
 "synset for another synset."
@@ -591,7 +593,7 @@ msgid "Matches for '%s'"
 msgstr "Encontrados para '%s'"
 
 #
-#: ../../../../multimatch.php:21 ../../../../synset.php:437
+#: ../../../../multimatch.php:21 ../../../../synset.php:377
 #, php-format
 msgid "Add another meaning of '%s' to the thesaurus"
 msgstr "Agregar otra sinonimia con '%s'"
@@ -972,75 +974,41 @@ msgstr ""
 msgid "(maximum number of synonyms reached)"
 msgstr "(se alcanz&oacute; el m&aacute;ximo de palabras)"
 
-#: ../../../../synset.php:285
-msgid ""
-"Superordinate und subordinate synsets (<a href=\"faq.php#hierarchie\">Help</"
-"a>):<br />"
-msgstr ""
-
-#: ../../../../synset.php:294
-msgid "This is the top superordinate synset."
-msgstr ""
-
-#: ../../../../synset.php:296
-msgid "Superordinate concept:"
-msgstr ""
-
-#: ../../../../synset.php:298
-msgid "delete reference"
-msgstr ""
-
-#: ../../../../synset.php:302
-msgid "No superordinate concept defined yet for this synset. Set one now:"
-msgstr ""
-
-#: ../../../../synset.php:319
-msgid "Subordinate concepts:"
-msgstr ""
-
-#: ../../../../synset.php:324
-msgid "There are no subordinate concepts yet for this synset."
-msgstr ""
-
-#: ../../../../synset.php:334
-msgid "Show in tree view"
-msgstr ""
-
 #
-#: ../../../../synset.php:343
+#: ../../../../synset.php:283
 #, php-format
 msgid "Remove the synset '%s'"
 msgstr "Borrar la sinonimia '%s'"
 
-#: ../../../../synset.php:358
+#: ../../../../synset.php:298
 msgid ""
 "This synset has only one word and no superordinate concept. Please add a "
 "synonym, set a superordinate concept, or delete this synset."
 msgstr ""
 
 #
-#: ../../../../synset.php:364 ../../../../synset_detail.php:137
+#: ../../../../synset.php:304 ../../../../synset_detail.php:137
 #: ../../../../word_detail.php:318
 msgid "Modify"
 msgstr "Modificar"
 
 #
-#: ../../../../synset.php:373
+#: ../../../../synset.php:313
 msgid "Latest three modifications in this synset"
 msgstr "&uacute;ltimas modificaciones de &eacute;sta Sinonimia"
 
 #
-#: ../../../../synset.php:374
+#: ../../../../synset.php:314
 msgid "added"
 msgstr "Agregado"
 
 #
-#: ../../../../synset.php:375
+#: ../../../../synset.php:315
 msgid "removed"
 msgstr "borrado"
 
 #
-#: ../../../../synset.php:396
+#: ../../../../synset.php:336
 msgid "(no modifications so far)"
 msgstr "(Sin modificaciones)"
 
@@ -1137,7 +1105,8 @@ msgid "Details for word '%s'"
 msgstr "Detalles para la palabra '%s'"
 
 #: ../../../../word_detail.php:153
-msgid "Error: the antonym you selected is already connected to a different word."
+msgid ""
+"Error: the antonym you selected is already connected to a different word."
 msgstr ""
 
 #
@@ -1158,4 +1127,3 @@ msgstr "Palabra:"
 #: ../../../../word_detail.php:281
 msgid "Please disambiguate your input:"
 msgstr ""
-

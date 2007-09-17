@@ -1,3 +1,5 @@
+<a href="http://developer.berlios.de" title="BerliOS Developer"> <img src="http://developer.berlios.de/bslogo.php?group_id=8872" width="124px" height="32px" border="0" alt="BerliOS Developer Logo"></a>
+
 <script type="text/javascript"><!--
 google_ad_client = "pub-5022648814902860";
 google_ad_width = 110;

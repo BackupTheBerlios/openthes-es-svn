@@ -19,7 +19,7 @@
 </tr>
 </table>
 
-<?php if( !isset($page) || ($page != "homepage" && $page != "login" && $page != "get_delete_comment")) { ?>
+<?php if( !isset($page) || ($page != "homepage" && $page != "login" && $page != "get_delete_comment" && $page != "synset")) { ?>
 	<script language="JavaScript" type="text/javascript">
 	<!--
 	document.forms['searchform']['word'].focus();

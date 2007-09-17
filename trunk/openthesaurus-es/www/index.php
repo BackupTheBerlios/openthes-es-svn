@@ -49,7 +49,7 @@ include("include/top.php");
 			</table>
 		</form>
 	</td>
-	<td valign="top"> <? include("adsense.php"); ?> </td>
+	<td valign="top"> <? include("banner.php"); ?> </td>
 	<td valign="top">
 
 		<?php 
