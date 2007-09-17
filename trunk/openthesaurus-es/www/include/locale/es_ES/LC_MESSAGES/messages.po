@@ -349,7 +349,7 @@ msgstr "Tema:"
 
 #: ../../../../add.php:71
 msgid "Which subject does the synset refer to?"
-msgstr "A Cu&aacute;al tema se refiere la sinonimia?"
+msgstr "A cu&aacute;l tema se refiere la sinonimia?"
 
 #: ../../../../add.php:78 ../../../../get_comment.php:28
 msgid "Send"
