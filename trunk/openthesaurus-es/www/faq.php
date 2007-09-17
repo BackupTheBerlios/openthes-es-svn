@@ -20,29 +20,29 @@ $name_list = array();
 // ------------------------------------------------
 
 addFAQ("Introducci&oacute;n",
-	'<p>OpenThesaurus-es es una página interactiva de web para el
-	mantenimiento de un tesauro. Un tesauro es un diccionario de sinónimos, 
+	'<p>OpenThesaurus-es es una p&aacute;gina interactiva de web para el
+	mantenimiento de un tesauro. Un tesauro es un diccionario de sin&oacute;nimos, 
 	o sea, sirve para consultar palabras con un significado igual o parecido. 
 	Por ejemplo buscando <a href="multimatch.php?word=falso&search=1"><bsp>falso</bsp></a> 
-	se encuentra entre otras las palabras <bsp>incorrecto, erróneo y inexacto</bsp>.</p>
+	se encuentra entre otras las palabras <bsp>incorrecto, err&oacute;neo y inexacto</bsp>.</p>
 
-	<p>Cada uno puede participar en OpenThesaurus-es y corregir errores o añadir
-	nuevos sinónimos. La función de búsqueda muestra todos los significados en
+	<p>Cada uno puede participar en OpenThesaurus-es y corregir errores o a&ntilde;adir
+	nuevos sin&oacute;nimos. La funci&oacute;n de b&uacute;squeda muestra todos los significados en
 	los que aparece una palabra (p.ej. crudo -&gt; crudo, sin cocer y otra entrada
 	para crudo, rudo, bruto ...). Junto a cada una de los significados se
-	pueden borrar palabras inadecuadas y añadir nuevas. Si la búsqueda no acierta
-	ofrece un enlace donde se puede añadir esa palabra al tesauro (si uno
-	conoce sinónimos de la palabra).</p>
+	pueden borrar palabras inadecuadas y a&ntilde;adir nuevas. Si la b&uacute;squeda no acierta
+	ofrece un enlace donde se puede a&ntilde;adir esa palabra al tesauro (si uno
+	conoce sin&oacute;nimos de la palabra).</p>
 
 	<p>Para poder participar es necesario <a href="register.php">registrarse</a>. Antes
-	debería leer este FAQ, para conocer las reglas mas importantes sobre el modo de para 
-	cambiar y añadir las palabras a las sinonimias. Con el enlace "Verificar sinonimia"
-	en la página principal se muestrar ejemplos al azar. Esos ejemplos ayudan a entenderse 
-	como se recompilan los sinónimos.  A propósito, el tesauro se publica bajo la 
+	deber&iacute;a leer este FAQ, para conocer las reglas mas importantes sobre el modo de para 
+	cambiar y a&ntilde;adir las palabras a las sinonimias. Con el enlace "Verificar sinonimia"
+	en la p&aacute;gina principal se muestrar ejemplos al azar. Esos ejemplos ayudan a entenderse 
+	como se recompilan los sin&oacute;nimos.  A prop&oacute;sito, el tesauro se publica bajo la 
 	<a href="http://www.gnu.org/copyleft/lesser.html">licencia LGPL </a>.</p>
 
-	<p>Antes de añadir o modificar entradas, se debe entender como las palabras
-	están agrupadas según significados. Por lo tanto cuando una palabra como ');
+	<p>Antes de a&ntilde;adir o modificar entradas, se debe entender como las palabras
+	est&aacute;n agrupadas seg&uacute;n significados. Por lo tanto cuando una palabra como ');
 
 // addFAQ("Was ist ein Synonym?",
 // 	'<p>Wenn zwei oder mehr Wörter in einem bestimmten Kontext
@@ -106,13 +106,13 @@ addFAQ("Introducci&oacute;n",
 // 			Beispiel: <span class="bsp">Appendix, Blinddarm</span></li>
 // 	</ul>', 'korr');
 
-addFAQ("Que quiere decir <em>forma básica</em>?",
-	'En la base de datos de OpenThesaurus-es solo se debe añadir formas conjugadas,
+addFAQ("Que quiere decir <em>forma b&aacute;sica</em>?",
+	'En la base de datos de OpenThesaurus-es solo se debe a&ntilde;adir formas conjugadas,
 	es decir en caso de verbos, solo la forma infinitiva, en caso de sustantivos, solo
 	la forma singular y en caso de adjetivos solo la forma masculina singular.
 	Ejemplos:
 	<p>	
-	VERBOS: <bsp>correr</bsp> pero no <bsp>corre</bsp>, <bsp>corrió</bsp><br />
+	VERBOS: <bsp>correr</bsp> pero no <bsp>corre</bsp>, <bsp>corri&oacute;</bsp><br />
 	SUSTANTIVOS: <bsp>casa</bsp> pero no <bsp>casas</bsp><br />
 	ADJETIVOS: <bsp>rojo</bsp> pero no <bsp>rojas</bsp> <br />
 	</p>',
@@ -174,9 +174,9 @@ addFAQ("Que quiere decir <em>forma básica</em>?",
 // 	</p>',
 // 	'hierarchie');
 
-addFAQ("Por qué hay que registrarse?",
-	'<p>Queremos evitar que algún bromista añade tonterías al Thesauro.
-	De toda manera se puede leer sin registrarse. También se puede bajar 
+addFAQ("Por qu&eacute; hay que registrarse?",
+	'<p>Queremos evitar que alg&uacute;n bromista a&ntilde;ade tonter&iacute;as al Thesauro.
+	De toda manera se puede leer sin registrarse. Tambi&eacute;n se puede bajar 
 	los datos sin registrarse.</p>', 'register');
 
 // addFAQ("Was sind die \"Wikipedia-Links\"?",
@@ -355,7 +355,7 @@ $bgcol = "#dddddd";
 $style = 'style="padding:2px;%;background-color:'.$bgcol.'"';
 
 // TOC:
-print "<strong $style>índice</strong>";
+print "<strong $style>&iacute;ndice</strong>";
 print "<ul>";
 $i = 0;
 foreach($q_list as $item) {
@@ -384,7 +384,7 @@ foreach($q_list as $item) {
 ?>
 
 <br />
-<p><i>Página actualizada: 2007-09-17</i></p>
+<p><i>P&aacute;gina actualizada: 2007-09-17</i></p>
 
 <!-- enables scrolling to the bottom entries: -->
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
