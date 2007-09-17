@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-17 14:31-0300\n"
+"POT-Creation-Date: 2007-09-17 15:12-0300\n"
 "PO-Revision-Date: 2007-09-17 05:51-0300\n"
 "Last-Translator: Marcelo Garrone <marcelo.garrone@gmail.com>\n"
 "Language-Team:  <es@li.org>\n"
@@ -904,7 +904,7 @@ msgstr "Sinonimia '%s'"
 
 #: ../../../../synset.php:101
 msgid "Modification saved."
-msgstr ""
+msgstr "Modificaci&oacute;n guardada."
 
 #
 #: ../../../../synset.php:103
@@ -967,7 +967,7 @@ msgid ""
 "only - to this synset:"
 msgstr ""
 "Opcional: agregar una palabra (sin&oacute;nimo) a &eacute;sta Sinonimia (<a "
-"href=\"faq.php#grundform\">base forms</a>):"
+"href=\"faq.php#grundform\">formato</a>):"
 
 #
 #: ../../../../synset.php:268
