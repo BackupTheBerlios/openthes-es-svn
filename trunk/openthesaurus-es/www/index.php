@@ -38,9 +38,9 @@ include("include/top.php");
 				</td>
 			</tr>
 			<tr><td></td></tr>
-			<tr>
+			<!--<tr>
 				<td colspan="3"><a href="tree.php"><strong>&gt;&gt;<?php print T_("Tree view") ?></strong></a></td>
-			</tr>
+			--></tr>
 			<tr><td></td></tr>
 			<tr>
 				<td colspan="3"><a href="top_users.php"><strong>&gt;&gt;<?php print T_("Top 15 users") ?></strong></a></td>
