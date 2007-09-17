@@ -49,17 +49,16 @@
 		(<?php print $size ?> KB, <?php print $date ?>)
 	<br />
 	
-	<?php
-	$filename = TARGET_DOWNLOAD_DIR . TARGET_SOURCE;
-	$fp = fopen($filename, "r");
-	$s_array = fstat($fp);
-	fclose($fp);
-	$date = date(TIMEFORMAT_SHORT, $s_array["mtime"]);
-	$size = sprintf("%.0f", $s_array["size"]/1000);
-	?>
-	<a href="<?php print BASE_URL . "/download/" . TARGET_SOURCE ?>"><?php print T_("OpenThesaurus Source") ?></a>
-		(<?php print $size ?> KB, <?php print $date ?>)
-
+	<b>SOURCE (<a href="http://es.wikipedia.org/wiki/Subversion">subversion</a>):</b>
+	<pre>
+	* Acceso an&oacute;nonimo via SVN:
+		svn checkout svn://svn.berlios.de/openthes-es/trunk
+	* Acceso an&oacute;nonimo via HTTP:
+		svn checkout http://svn.berlios.de/svnroot/repos/openthes-es/trunk
+	* Navegar con <a href="http://svn.berlios.de/svnroot/repos/openthes-es">HTTP</a>
+	* Navegar con <a href="http://svn.berlios.de/viewcvs/openthes-es">ViewCVS</a>
+	* Navegar con <a href="http://svn.berlios.de/wsvn/openthes-es">WebSVN</a>
+	</pre>
 
 	<p>Desea tener un buscador de sin&oacute;nimos incrustado en tu web?</p>
 	<p>Pues aqu&iacute; est&aacute; el c&oacute;digo:</p>
