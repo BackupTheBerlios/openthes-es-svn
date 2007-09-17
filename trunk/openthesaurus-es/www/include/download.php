@@ -49,6 +49,18 @@
 		(<?php print $size ?> KB, <?php print $date ?>)
 	<br />
 	
+	<?php
+	$filename = TARGET_DOWNLOAD_DIR . "openthesaurus-es_dump.sql";
+	$fp = fopen($filename, "r");
+	$s_array = fstat($fp);
+	fclose($fp);
+	$date = date(TIMEFORMAT_SHORT, $s_array["mtime"]);
+	$size = sprintf("%.0f", $s_array["size"]/1000);
+	?>
+	<a href="<?php print BASE_URL . "/download/" . "openthesaurus-es_dump.sql" ?>">Mysql Dump</a>
+		(<?php print $size ?> KB, <?php print $date ?>)
+	<br />
+
 	<b>SOURCE (<a href="http://es.wikipedia.org/wiki/Subversion">subversion</a>):</b>
 	<pre>
 	* Acceso an&oacute;nonimo via SVN:
