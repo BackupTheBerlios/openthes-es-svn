@@ -318,7 +318,7 @@ msgstr "Agregar otra Sinonimia"
 #
 #: ../../../../add.php:17
 msgid "Word&nbsp;(<a href='faq.php#grundform'>base&nbsp;form</a>)"
-msgstr "Palabra&nbsp;(<a href='faq.php#grundform'>formato</a>)"
+msgstr "Palabra&nbsp;(<a href='faq.php#grundform'>forma b&aacute;sica</a>)"
 
 #: ../../../../add.php:36
 msgid "A new synset -- i.e. a new meaning -- will be started with this word."
