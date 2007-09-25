@@ -90,7 +90,7 @@ $query = sprintf("SELECT words.id AS id, word_meanings.id AS wmid,
 	WHERE 
 		word_meanings.meaning_id = %d AND
 		words.id = word_meanings.word_id
-	ORDER BY meaning_id, word", $meaning_id);
+	ORDER BY meaning_id", $meaning_id);
 $db->query($query);
 
 include("include/top.php");
