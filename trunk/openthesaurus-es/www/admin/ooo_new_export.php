@@ -152,23 +152,23 @@ while( $db->next_record() ) {
 	$syn_line = getLine($synset, $w, '');
 	$generic_line = "";
 	# superordinate concepts:
-	if( $min_depth != -1 ) {
-		#startTimer();
-		$depth = sizeof(getSuperordinateSynsets($db2, $db->f('meaning_id')));
-		if( $i % 1000 == 0 ) {
-			#print "getSuperordinateSynsets: ";
-			#endTimer();
-			#print "<br>";
-		}
-		if( $depth >= $min_depth ) {
-			$generic_synset = getSynsetWithUsage($db->f('super_id'));
-			if( sizeof($generic_synset) > 0 ) {
-				$generic_line = getLine($generic_synset, $w, $generic_term);
-				$generic_line = substr($generic_line, 1);	# cut off "-"
-				#print $syn_line.$generic_line."<br>";
-			}
-		}
-	}
+// 	if( $min_depth != -1 ) {
+// 		#startTimer();
+// 		$depth = sizeof(getSuperordinateSynsets($db2, $db->f('meaning_id')));
+// 		if( $i % 1000 == 0 ) {
+// 			#print "getSuperordinateSynsets: ";
+// 			#endTimer();
+// 			#print "<br>";
+// 		}
+// 		if( $depth >= $min_depth ) {
+// 			$generic_synset = getSynsetWithUsage($db->f('super_id'));
+// 			if( sizeof($generic_synset) > 0 ) {
+// 				$generic_line = getLine($generic_synset, $w, $generic_term);
+// 				$generic_line = substr($generic_line, 1);	# cut off "-"
+// 				#print $syn_line.$generic_line."<br>";
+// 			}
+// 		}
+// 	}
 	# Antonyme:
 	$antonym_line = "";
 	if ($antonym_term != "") {
@@ -179,19 +179,19 @@ while( $db->next_record() ) {
 			#print "Anto: ".$w.": ".$antonym_word." -- ".$antonym_line."<br>";
 		}
 	}
-	if ($sub_term != "") {
-		#subordinate concepts:
-		$sub_line = "";
-		$sub = getSubordinateSynsets($db2, $db->f('meaning_id'));
-		foreach( $sub as $sub_id ) {
-			$sub_synset = getSynsetWithUsage($sub_id);
-			if(sizeof($sub_synset) > 0 ) {
-				$sub_line = getLine($sub_synset, $w, $sub_term);
-				$sub_line = substr($sub_line, 1);       # cut off "-"
-				$syn_line = $syn_line.$sub_line;
-			}
-		}
-	}
+// 	if ($sub_term != "") {
+// 		#subordinate concepts:
+// 		$sub_line = "";
+// 		$sub = getSubordinateSynsets($db2, $db->f('meaning_id'));
+// 		foreach( $sub as $sub_id ) {
+// 			$sub_synset = getSynsetWithUsage($sub_id);
+// 			if(sizeof($sub_synset) > 0 ) {
+// 				$sub_line = getLine($sub_synset, $w, $sub_term);
+// 				$sub_line = substr($sub_line, 1);       # cut off "-"
+// 				$syn_line = $syn_line.$sub_line;
+// 			}
+// 		}
+// 	}
 
 	$syn_line = $syn_line.$generic_line;
 	if ($antonym_line != "") {
