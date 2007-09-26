@@ -19,7 +19,7 @@ if( isset($_GET['word']) ) {
 			words.id = word_meanings.word_id AND
 			word_meanings.meaning_id = meanings.id AND
 			meanings.hidden = 0
-		ORDER BY word",
+		",
 		myaddslashes(trim(escape($_GET['word']))),
 		myaddslashes(trim(escape($_GET['word']))));
 	$db->query($query);

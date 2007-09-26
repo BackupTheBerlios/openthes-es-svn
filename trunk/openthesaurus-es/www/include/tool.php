@@ -67,7 +67,7 @@
 					word_mapping.base_id = word_forms.id AND
 					word_mapping2.derived_id = word_mapping.derived_id AND
 					word_forms2.id = word_mapping2.derived_id
-				ORDER BY word", myaddslashes(getLookupWord($word)));
+				", myaddslashes(getLookupWord($word)));
 		$db->query($query);
 		while( $db->next_record() ) {
 			$wordform = $db->f('word');
@@ -132,7 +132,7 @@
 						OR
 						($query_part2
 						CHAR_LENGTH(lookup) >= %d AND CHAR_LENGTH(lookup) <= %d))
-						ORDER BY word",
+						",
 					$wordlen-1, $wordlen+1, $wordlen-1, $wordlen+1);
 		} else {
 			$query = sprintf("SELECT DISTINCT word, lookup
@@ -147,7 +147,7 @@
 							OR
 							($query_part2
 							CHAR_LENGTH(lookup) >= %d AND CHAR_LENGTH(lookup) <= %d))
-							ORDER BY word",
+							",
 						HIDDEN_SYNSETS, $wordlen-1, $wordlen+1, $wordlen-1, $wordlen+1);
 		}
 
@@ -414,7 +414,7 @@
 			WHERE 
 				word_forms.word = '%s' AND
 				word_mapping.base_id = word_forms.id
-			ORDER BY word", myaddslashes($word));
+			", myaddslashes($word));
 		$db->query($query);
 		$ids = array();
 		while( $db->next_record() ) {
@@ -442,7 +442,7 @@
 			WHERE 
 				word_forms.word = '%s' AND
 				word_mapping.derived_id = word_forms.id
-			ORDER BY word", myaddslashes($word));
+			", myaddslashes($word));
 		$db->query($query);
 		$base_ids = array();
 		while( $db->next_record() ) {
@@ -478,7 +478,7 @@
 					word_meanings.meaning_id = meanings.id AND
 					meanings.hidden = 0 AND
 					meanings.id NOT IN (%s)
-				ORDER BY word", myaddslashes(escape($str)), HIDDEN_SYNSETS);
+				", myaddslashes(escape($str)), HIDDEN_SYNSETS);
 		}
 		$db->query($query);
 		$prev_word = "";
@@ -508,7 +508,7 @@
 					word_meanings.meaning_id = meanings.id AND
 					meanings.hidden = 0 AND
 					meanings.id NOT IN (%s)
-				ORDER BY word", myaddslashes(escape($str)), HIDDEN_SYNSETS);
+				", myaddslashes(escape($str)), HIDDEN_SYNSETS);
 		}
 		$db->query($query);
 		return $db->nf();
@@ -607,7 +607,7 @@
 			WHERE 
 				word_meanings.meaning_id = %d AND
 				words.id = word_meanings.word_id
-			ORDER BY word", $id);
+			", $id);
 		$db->query($query);
 		$synset = array();
 		while( $db->next_record() ) {
@@ -635,7 +635,7 @@
 			WHERE 
 				word_meanings.meaning_id = %d AND
 				words.id = word_meanings.word_id
-			ORDER BY word", $id);
+			", $id);
 		$db->query($query);
 		$synset = array();
 		while( $db->next_record() ) {
