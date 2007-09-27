@@ -62,6 +62,11 @@ while( $db->next_record() ) {
 	if ($subject != "") {
 		$subject_str = "[".$subject."]";
 	}
+	$morphologic = getMorphologic($db->f('meaning_id'));
+	$morphologic_str = "";
+	if ($morphologic != "") {
+		$morphologic_str = "[".$morphologic."]";
+	}
 	$synset_str = join(', ', $synset);
 	$word_regexp = preg_quote($word, '/');
 	# \b doesn't react on German special characters etc. so we use
@@ -82,6 +87,7 @@ while( $db->next_record() ) {
 	?>
 	<li class="synsetlist"><a <?php print $accesskey; ?> href="synset.php?id=<?php print $db->f('meaning_id')?><?php 
 		print $url_suffix ?>"><?php print $synset_str." ".$subject_str ?></a>
+		<?php print $morphologic_str ?>
 		<?php if (SUPERSETS_IN_OVERVIEW && $db->f('super_id')) { ?>
 			<br />
 			<span class="supersynsethead"><?php print T_("Superordinate synset") ?>:</span>
