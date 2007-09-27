@@ -81,6 +81,7 @@ if( intval($db->f('hidden')) == 1 ) {
 }
 
 $subject = getSubject($meaning_id);
+$morphologic = getMorphologic($meaning_id);
 
 $title = sprintf(T_("Synset '%s'"), getSynsetString($meaning_id, 3));
 
@@ -132,6 +133,9 @@ while( $db->next_record() ) {
 			<td colspan="4">
 				<?php if( $subject ) { ?>
 					<h3>[<?php print $subject ?>]</h3>
+				<?php } ?>
+				<?php if( $morphologic ) { ?>
+					<h1>[<?php print $morphologic ?>]</h1>
 				<?php } ?>
 				<?php if( $distinction ) { ?>
 					<h3><?php print T_("in terms of") ?> <span class="inp"><?php print $distinction ?></span></h3>

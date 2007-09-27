@@ -264,7 +264,7 @@
 	/** Add a new synset to the database. Return -1 on error or
 	  * the synset's id on success.
 	  */
-	function addSynset($db, $auth, $word, $subject_id, $distinction) {
+	function addSynset($db, $auth, $word, $subject_id, $distinction, $morphologic_id) {
 		if( strlen(trim($word)) < 1 ) {
 			print T_("Error: word is too short.");
 			return -1;
@@ -279,7 +279,7 @@
 		$query = sprintf("INSERT INTO user_actions_log
 			(id, user_id, ip_address, date, word, type)
 			VALUES
-			(%d, '%s', '%s', '%s', '%s', '%s')",
+			(%d, '%s', '%s', '%s', '%s', '%s', '%s')",
 				$log_id, myaddslashes($auth->auth['uid']), 
 				myaddslashes(getenv('REMOTE_ADDR')),
 				$date, myaddslashes(escape($word)), ADD_SYNSET);
@@ -294,13 +294,18 @@
 		if( $distinction ) {
 			$distinction_sql = "'".myaddslashes(escape($distinction))."'";
 		}
+		$morphologic_id_sql = "NULL";
+		if( $morphologic_id != "" ) {
+			$morphologic_id_sql = intval($morphologic_id);
+		}
 		$new_meaning_id = $db->nextid("meanings");
 		$query = sprintf("INSERT INTO meanings
-				(id, subject_id, distinction)
-				VALUES (%d, %s, %s)",
+				(id, subject_id, distinction, morphologic_id)
+				VALUES (%d, %s, %s, %s)",
 					$new_meaning_id,
 					$subject_id_sql,
-					$distinction_sql);
+					$distinction_sql,
+					$morphologic_id_sql);
 		$db->query($query);
 
 		# update the log with the meaning id:
@@ -364,11 +369,11 @@
 	// Show links to Google etc.:
 	function externalSearchLinks($word) {
 		$msg = sprintf(T_("Search '%s' with Google"), escape($word));
-		$url = sprintf(T_("http://www.google.de/search?q=%s&amp;lr=lang_de"), urlencode($word));
+		$url = sprintf(T_("http://www.google.com.uy/search?q=%s&amp;lr=lang_es"), urlencode($word));
 		print '<p><a accesskey="g" href="'.$url.'">'.$msg.'</a>';
 		print ' -- ';
 		$msg = sprintf(T_("Search '%s' with Wikipedia"), escape($word));
-		$url = sprintf(T_("http://www.google.de/search?q=site:de.wikipedia.org+%s"), urlencode($word));
+		$url = sprintf(T_("http://www.google.com.uy/search?q=site:es.wikipedia.org+%s"), urlencode($word));
 		print '<a accesskey="w" href="'.$url.'">'.$msg.'</a></p>';
 	}
 	
@@ -666,6 +671,18 @@
 		$db->query($query);
 		$db->next_record();
 		return $db->f('subject');
+	}
+
+	function getMorphologic($meaning_id) {
+		$db = new DB_Thesaurus;
+		$query = sprintf("SELECT morphologic
+			FROM meanings, morphologics
+			WHERE 
+				meanings.id = %d AND
+				morphologics.id = meanings.morphologic_id", $meaning_id);
+		$db->query($query);
+		$db->next_record();
+		return $db->f('morphologic');
 	}
 
 	/** Strike out deleted words and show added words in green. */

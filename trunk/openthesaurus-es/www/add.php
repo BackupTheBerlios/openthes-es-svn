@@ -71,6 +71,28 @@ include("include/top.php");
 	<td><?php print T_("Which subject does the synset refer to?") ?></td>
 </tr>
 
+<tr>
+	<td valign="top"><?php print T_("Morphologic:") ?></td>
+	<td valign="top"><select name="morphologic_id">
+			<option value=""><?php print T_("(none)") ?></option>
+			<?php
+			$query = sprintf("SELECT id, morphologic
+				FROM morphologics
+				ORDER BY morphologic");
+			$db->query($query);
+			while( $db->next_record() ) {				
+				?>
+				<option value="<?php print $db->f('id') ?>"><?php print $db->f('morphologic') ?></option>
+			<?php } ?>
+		</select>
+	</td>
+	<td><?php print T_("...") ?></td>
+</tr>
+
+
+
+
+
 <tr><td>&nbsp;</td></tr>
 
 <tr>

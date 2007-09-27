@@ -19,6 +19,11 @@ if( uservar('do_save') == 1 ) {
 	} else {
 		$distinction_sql = "distinction = '" . escape(trim(myaddslashes(uservar('distinction')))) . "', ";
 	}
+	if( uservar('morphologic_id') == "" ) {
+		$morphologic_sql = "NULL";
+	} else {
+		$morphologic_sql = intval(uservar('morphologic_id'));
+	}
 	if( uservar('visible') ) {
 		$new_hidden = 0;
 	} else {
@@ -28,20 +33,24 @@ if( uservar('do_save') == 1 ) {
 	if( $auth->auth['uname'] == 'admin' ) {
 		$query = sprintf("UPDATE meanings
 			SET subject_id = %s,
+				morphologic_id = %s,
 				%s
 				hidden = %s
 			WHERE
 				id = %d",
 				$new_id,
+				$morphologic_sql,
 				$distinction_sql,
 				myaddslashes($new_hidden),
 				myaddslashes(uservar('mid')));
 	} else {
 		$query = sprintf("UPDATE meanings
 			SET subject_id = %s
+				morphologic_id = %s
 			WHERE
 				id = %d",
 				$new_id,
+				$morphologic_sql,
 				myaddslashes(uservar('mid')));
 	}
 	$db->query($query);
@@ -51,10 +60,17 @@ if( uservar('do_save') == 1 ) {
 	$new_subject = $db->f('subject');
 	doLog(getSynsetString(uservar('mid'), 3), uservar('mid'), CHANGE_SUBJECT,
 		uservar('oldsubject')."->".$new_subject);
+	
+	$query = sprintf("SELECT morphologic FROM morphologics WHERE id = %d", $morphologic_sql);
+	$db->query($query);
+	$db->next_record();
+	$new_morphologic = $db->f('morphologic');
+	doLog(getSynsetString(uservar('mid'), 3), uservar('mid'), CHANGE_SUBJECT,
+		uservar('oldmorphologic')."->".$new_morphologic);
 	$changed = 1;
 }
 
-$query = sprintf("SELECT id, subject_id, distinction, hidden
+$query = sprintf("SELECT id, subject_id, morphologic_id, distinction, hidden
 	FROM meanings
 	WHERE id = %d", myaddslashes(uservar('mid')));
 $db->query($query);
@@ -64,6 +80,7 @@ if( $db->nf() == 0 ) {
 }
 $db->next_record();
 $subject_id = $db->f('subject_id');
+$morphologic_id = $db->f('morphologic_id');
 
 $title = sprintf(T_("Details for synset '%s'"), getSynsetString(uservar('mid'), 3));
 
@@ -95,6 +112,34 @@ function popdownlist() {
 	print '<input type="hidden" name="oldsubject" value="'.$oldsubject.'"/>';
 }
 
+function popdownlistmorpho() {
+	global $db, $morphologic_id;
+	$query = "SELECT id, morphologic FROM morphologics ORDER By morphologic";
+	$db->query($query);
+	$i = 0;
+	print '<select name="morphologic_id">';
+	print '<option value="">'.T_("(none)").'</option>'."\n";
+	$oldmorphologic = T_("(none)");
+	while( $db->next_record() ) {
+		$checked = "";
+		# specific to German OpenThesaurus:
+		# these are now handled on a word-by-word basis, so ignore them here:
+		if( $db->f('id') == 17 ||	# umgangssprachlich
+			$db->f('id') == 16 ) {	# figurativ
+			continue;
+		}
+		# end "specific to German OpenThesaurus"
+		if( $morphologic_id == $db->f('id') ) {
+			$checked = "selected=\"selected\"";
+			$oldmorphologic = $db->f('morphologic');
+		}
+		print '<option '.$checked.' value="'.$db->f('id').'">'.$db->f('morphologic').'</option>'."\n";
+		$i++;
+	}
+	print '</select>';
+	print '<input type="hidden" name="oldmorphologic" value="'.$oldmorphologic.'"/>';
+}
+
 if ($changed) {
 	$loc = sprintf("synset.php?id=%d&changed=1&rand=%d", uservar('mid'), time());
 	header("Location: $loc");
@@ -123,6 +168,11 @@ include("include/top.php");
 	<tr>
 		<td><strong><?php print T_("in terms of:") ?></strong></td>
 		<td><input type="text" name="distinction" value="<?php print $db->f('distinction'); ?>" /></td>
+	<tr>
+	<td valign="top"><strong><?php print T_("morpho:") ?></strong></td>
+	<td>
+		<?php popdownlistmorpho(); ?>
+	</td>
 	</tr>
 	<?php
 } ?>

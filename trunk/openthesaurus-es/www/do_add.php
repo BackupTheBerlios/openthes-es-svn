@@ -6,7 +6,8 @@ include("include/tool.php");
 $db = new DB_Thesaurus;
 
 $new_meaning_id = addSynset($db, $auth, postvar('word'),
-	postvar('subject_id'), postvar('distinction'));
+	postvar('subject_id'), postvar('distinction'),
+	postvar('morphologic_id'));
 if( $new_meaning_id != -1 ) {
 	header("Location: synset.php?id=$new_meaning_id&changed=2");
 }
