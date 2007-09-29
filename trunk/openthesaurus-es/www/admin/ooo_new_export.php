@@ -37,7 +37,7 @@ $readme_target = "../OOo2-Thesaurus/README_th_".$lang."_v2.txt";
 function getLine($synset, $w, $comment) {
 	# TODO??: avoid colloqial as first entry, otherwise "gehen" has
 	# a meaning "gehen (umgangssprachlich)" which is confusing?
-	$str = "-";
+	$str = "";
 	foreach($synset as $s) {
 		# FIXME: some words don't have synonyms, these should be ignored
 		if( $s != $w || sizeof($synset) == 1 ) {
@@ -52,7 +52,6 @@ function getLine($synset, $w, $comment) {
 	if( $str == "-" ) {
 		return "";
 	}
-// 	$str = swissSpelling($str);
 	return $str;
 }
 
@@ -69,16 +68,6 @@ function cmp($a, $b) {
 	$second_parts = preg_split("/\|/", $b);
 	return(strcmp($first_parts[0], $second_parts[0]));
 }
-
-// function swissSpelling($word) {
-// 	global $swiss_spelling;
-// 	if ($swiss_spelling == 1) {
-// 		# Seems we need to use conv because *this* file (ooo_new_export.php)
-// 		# is in UTF-8?
-// 		$word = preg_replace("/".iconv("latin1", "utf8", "�")."/", "ss", $word);
-// 	}
-// 	return $word;
-// }
 
 $title = "OpenThesaurus admin interface: Build OOo 2.0 thesaurus files";
 include("../include/top.php");
@@ -139,9 +128,6 @@ while( $db->next_record() ) {
 			continue;
 		}
 	}
-// 	$w = swissSpelling($w);
-	//if ($curr_word == "" || strtolower($curr_word) != strtolower($w))
-	//	$curr_word = $w;
 	if( $i % 1000 == 0 ) {
 		print strftime("%H:%M:%S")." -- word $i...<br>"; flush();
 	}
@@ -149,26 +135,13 @@ while( $db->next_record() ) {
 	$word_id = $db->f('word_id');
 	#print $db->f('meaning_id')."\n";
 	$synset = getSynsetWithUsage($db->f('meaning_id'));
+	$str = getMorphologic($db->f('meaning_id'));
+	$str2 = "";
+		if ($str != "") {
+		$str2 = "(".$str.")";
+		}
 	$syn_line = getLine($synset, $w, '');
 	$generic_line = "";
-	# superordinate concepts:
-	if( $min_depth != -1 ) {
-		#startTimer();
-		$depth = sizeof(getSuperordinateSynsets($db2, $db->f('meaning_id')));
-		if( $i % 1000 == 0 ) {
-			#print "getSuperordinateSynsets: ";
-			#endTimer();
-			#print "<br>";
-		}
-		if( $depth >= $min_depth ) {
-			$generic_synset = getSynsetWithUsage($db->f('super_id'));
-			if( sizeof($generic_synset) > 0 ) {
-				$generic_line = getLine($generic_synset, $w, $generic_term);
-				$generic_line = substr($generic_line, 1);	# cut off "-"
-				#print $syn_line.$generic_line."<br>";
-			}
-		}
-	}
 	# Antonyme:
 	$antonym_line = "";
 	if ($antonym_term != "") {
@@ -179,21 +152,7 @@ while( $db->next_record() ) {
 			print "Anto: ".$w.": ".$antonym_word." -- ".$antonym_line."<br>";
 		}
 	}
-	if ($sub_term != "") {
-		#subordinate concepts:
-		$sub_line = "";
-		$sub = getSubordinateSynsets($db2, $db->f('meaning_id'));
-		foreach( $sub as $sub_id ) {
-			$sub_synset = getSynsetWithUsage($sub_id);
-			if(sizeof($sub_synset) > 0 ) {
-				$sub_line = getLine($sub_synset, $w, $sub_term);
-				$sub_line = substr($sub_line, 1);       # cut off "-"
-				$syn_line = $syn_line.$sub_line;
-			}
-		}
-	}
-
-	$syn_line = $syn_line.$generic_line;
+	$syn_line = $str2.$syn_line.$generic_line;
 	if ($antonym_line != "") {
 		$syn_line .= "|" . $antonym_line;
 	}

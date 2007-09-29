@@ -40,9 +40,15 @@ $db->query($query);
 	$ids = array();
 	while( $db->next_record() ) {
 		$synset = getSynsetWithUsage($db->f('id'), 1);
+		$morphologic = getMorphologic($db->f('id'), 1);
+		$morphologic_str = "";
+		if ($morphologic != "") {
+		$morphologic_str = "[".$morphologic."]";
+		}
 		array_push($ids, $db->f('id'));
 		?>
 		<li><!-- check_count: <?php print $db->f('check_count') ?> -->
+			<?php print $morphologic_str ?>
 			<a href="synset.php?id=<?php print $db->f('id') ?>"><?php print join(', ', $synset) ?></a></li>
 	<?php
 	}
