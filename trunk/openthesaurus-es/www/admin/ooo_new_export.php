@@ -11,7 +11,7 @@ $lang = "es_ES";
 $generic_term = " (Oberbegriff)";
 #$sub_term = " (Unterbegriff)";		# leave empty to disable
 $sub_term = "";		# leave empty to disable
-$antonym_term = " (Antónimo)";		# leave empty to disable
+$antonym_term = " (Antï¿½nimo)";		# leave empty to disable
 
 # Don't list words in the top hierarchie as generic terms, as it's usually not very
 # helpful to know that e.g. a "creature" is an "entity" (use -1 to disable generic terms):
@@ -139,6 +139,8 @@ while( $db->next_record() ) {
 	$str2 = "";
 		if ($str != "") {
 		$str2 = "(".$str.")";
+		} else {
+		$str2 = "-";
 		}
 	$syn_line = getLine($synset, $w, '');
 	$generic_line = "";
