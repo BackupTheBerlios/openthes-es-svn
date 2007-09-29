@@ -85,15 +85,11 @@ while( $db->next_record() ) {
 		$accesskey = "accesskey=\"$synmatches\"";
 	}
 	?>
-	<li class="synsetlist"><a <?php print $accesskey; ?> href="synset.php?id=<?php print $db->f('meaning_id')?><?php 
-		print $url_suffix ?>"><?php print $synset_str." ".$subject_str ?></a>
+	<li class="synsetlist">
 		<?php print $morphologic_str ?>
-		<?php if (SUPERSETS_IN_OVERVIEW && $db->f('super_id')) { ?>
-			<br />
-			<span class="supersynsethead"><?php print T_("Superordinate synset") ?>:</span>
-				<span class="supersynset"><?php print join(getSynsetWithUsage($db->f('super_id'), 1, 3), ", ") ?></span>
-		<?php } ?>
-		</li>
+		<a <?php print $accesskey; ?> href="synset.php?id=<?php print $db->f('meaning_id')?><?php 
+		print $url_suffix ?>"><?php print $synset_str." ".$subject_str ?></a>
+	</li>
 	<?php
 }
 ?>
