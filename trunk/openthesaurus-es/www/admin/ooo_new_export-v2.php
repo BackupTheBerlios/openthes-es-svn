@@ -134,7 +134,7 @@ while( $db->next_record() ) {
 	}
 	$i++;
 	$word_id = $db->f('word_id');
-	print $db->f('meaning_id')."\n";
+	#print $db->f('meaning_id')."\n";
 	$synset = getSynsetWithUsage($db->f('meaning_id'));
 	$str = getMorphologic($db->f('meaning_id'));
 	$str2 = "";
