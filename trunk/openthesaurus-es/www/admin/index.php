@@ -70,7 +70,8 @@ $db->query($query);
 		
 		<a href="loose.php">Words not below the top synset</a> |
 		<a href="search.php">Free text search</a> | <a href="duplicate_check.php">Duplicates</a> |
-		<a href="search_senses.php">Senses</a> | <a href="search_uses.php">Uses</a> | <a href="subject.php?id=1">Subjects</a> |
+		<a href="search_senses.php">Senses</a> | <a href="search_uses.php">Uses</a> | 
+		<a href="subject.php?id=1">Subjects</a> | <a href="morphologic.php?id=1">Morphologics</a>
 		<a href="find_phrases.php">Phrases</a> | <a href="abk2.php">Ellipsis</a> |
 		<a href="find_large.php">Large synsets</a> | <a href="find_small.php?size=1">Small Synsets</a> |
 		<a href="suffix.php">Prefix/suffix</a> | <a href="abk.php">Short forms</a> |
