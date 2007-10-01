@@ -116,6 +116,7 @@ if( uservar('changed') == 1 ) { ?>
 <?php
 $i = 0;
 $color_ct = 0;
+$num = 0;
 $synset_org = array();
 $word_count = 0;
 $antonym_defined = 0;
@@ -150,13 +151,25 @@ while( $db->next_record() ) {
 	<?php
 	}
 	$bgcolor = "";
-	if( $color_ct % 2 == 0 ) {
+	if( $color_ct == 0 ) {
+		$bgcolor = "bgcolor=\"#ffaacc\"";
+	} elseif ( $color_ct == 1 ) {
+		$bgcolor = "bgcolor=\"#aaccff\"";
+	} elseif ( $color_ct % 2 == 0 ) {
 		$bgcolor = "bgcolor=\"#dddddd\"";
+	}
+	$num_ctr = "";
+	if( $num == 0 ) {
+		$num_ctr = "PALABRA:";
+	} elseif( $num == 1 ){
+		$num_ctr = "Significado:";
+	} else {
+		$num_ctr = "";
 	}
 	?>
 
 	<tr>
-		<td width="5"></td>
+		<td width="5"><?php print $num_ctr?></td>
 		<td <?php print $bgcolor?>>
 				<?php
 				$orig_word = $db->f('word');
@@ -237,6 +250,7 @@ while( $db->next_record() ) {
 	
 	$i++;
 	$color_ct++;
+	$num++;
 } ?>
 
 <?php if( ! $hidden ) { ?>
