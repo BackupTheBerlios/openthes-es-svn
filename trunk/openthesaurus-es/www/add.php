@@ -72,7 +72,7 @@ include("include/top.php");
 </tr>
 
 <tr>
-	<td valign="top"><?php print T_("Morphologic:") ?></td>
+	<td valign="top"><?php print T_("Categor&iacute;a l&eacute;xica:") ?></td>
 	<td valign="top"><select name="morphologic_id">
 			<option value=""><?php print T_("(none)") ?></option>
 			<?php

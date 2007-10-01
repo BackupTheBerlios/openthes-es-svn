@@ -169,7 +169,7 @@ include("include/top.php");
 		<td><strong><?php print T_("in terms of:") ?></strong></td>
 		<td><input type="text" name="distinction" value="<?php print $db->f('distinction'); ?>" /></td>
 	<tr>
-	<td valign="top"><strong><?php print T_("morpho:") ?></strong></td>
+	<td valign="top"><strong><?php print T_("Categor&iacute;a l&eacute;xica:") ?></strong></td>
 	<td>
 		<?php popdownlistmorpho(); ?>
 	</td>
