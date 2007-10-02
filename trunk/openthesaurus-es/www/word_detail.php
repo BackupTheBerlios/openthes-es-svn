@@ -242,7 +242,7 @@ include("include/top.php");
 	<td><strong><?php print T_("Word:") ?></strong></td>
 	<td><?php print $word; ?></td>
 </tr>
-<tr>
+<!--<tr>
 	<td valign="top"><strong><?php print T_("Word forms:") ?></strong></td>
 	<td valign="top"><?php
 	$forms = join(", ", getWordForms($db, $word));
@@ -252,7 +252,7 @@ include("include/top.php");
 		print $forms;
 	}
 	?></td>
-</tr>
+</tr>-->
 <tr>
 	<td valign="top"><strong><?php print T_("Word usage in this synset:") ?></strong></td>
 	<td valign="top">

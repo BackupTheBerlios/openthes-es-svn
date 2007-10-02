@@ -93,14 +93,7 @@ function popdownlist() {
 	print '<option value="">'.T_("(none)").'</option>'."\n";
 	$oldsubject = T_("(none)");
 	while( $db->next_record() ) {
-		$checked = "";
-		# specific to German OpenThesaurus:
-		# these are now handled on a word-by-word basis, so ignore them here:
-		if( $db->f('id') == 17 ||	# umgangssprachlich
-			$db->f('id') == 16 ) {	# figurativ
-			continue;
-		}
-		# end "specific to German OpenThesaurus"
+		$checked = "";		
 		if( $subject_id == $db->f('id') ) {
 			$checked = "selected=\"selected\"";
 			$oldsubject = $db->f('subject');
@@ -121,14 +114,7 @@ function popdownlistmorpho() {
 	print '<option value="">'.T_("(none)").'</option>'."\n";
 	$oldmorphologic = T_("(none)");
 	while( $db->next_record() ) {
-		$checked = "";
-		# specific to German OpenThesaurus:
-		# these are now handled on a word-by-word basis, so ignore them here:
-		if( $db->f('id') == 17 ||	# umgangssprachlich
-			$db->f('id') == 16 ) {	# figurativ
-			continue;
-		}
-		# end "specific to German OpenThesaurus"
+		$checked = "";		
 		if( $morphologic_id == $db->f('id') ) {
 			$checked = "selected=\"selected\"";
 			$oldmorphologic = $db->f('morphologic');
