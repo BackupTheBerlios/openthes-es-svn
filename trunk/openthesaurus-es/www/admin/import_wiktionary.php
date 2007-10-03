@@ -4,10 +4,10 @@ error_reporting(E_ALL);
 # Imports selected content from XML file like this (unpack first):
 # http://download.wikimedia.org/dewiktionary/latest/dewiktionary-latest-pages-meta-current.xml.bz2
 
-if( ! (getenv('REMOTE_ADDR') == getenv('SERVER_ADDR')) ) {
-	print "Access from your host is denied.";
-	return;
-}
+// if( ! (getenv('REMOTE_ADDR') == getenv('SERVER_ADDR')) ) {
+// 	print "Access from your host is denied.";
+// 	return;
+// }
 
 include("../include/phplib/prepend.php3");
 $db = new DB_Thesaurus;
