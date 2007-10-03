@@ -63,7 +63,7 @@ if ($handle) {
         $endpos = strpos($buffer, "</title>");
         if ($pos !== false && $endpos !== false) {
         	if (sizeof($meanings) > 0 && $lang == WIKTIONARY_LANG) {
-        		if ((strpos($title, "Vorlage:") !== false || strpos($title, "Wiktionary:") !== false)) {
+        		if ((strpos($title, "Categoría:") !== false || strpos($title, "Wiktionary:") !== false)) {
 					#print "Ignoring(2): $title<br>";
 				} else {
 					storeData($title, $meanings, $synonyms);
@@ -78,21 +78,21 @@ if ($handle) {
     	    if (strpos($title, "MediaWiki:") !== false) {
     	    	$title = "";
     	    }
-        } elseif ((strpos($buffer, "{{Bedeutungen}}") !== false || strpos($buffer, "{{Bedeutung}}") !== false) && $title != "") {
-        	$state = "bedeutungen";
-        } elseif (strpos($buffer, "{{Synonyme}}") !== false && $title != "") {
-        	$state = "synonyme";
+        } elseif ((strpos($buffer, "{{Definiciones}}") !== false || strpos($buffer, "{{Definición}}") !== false) && $title != "") {
+        	$state = "definiciones";
+        } elseif (strpos($buffer, "{{Sinónimo}}") !== false && $title != "") {
+        	$state = "sinonimo";
         } elseif (strpos($buffer, WIKTIONARY_LANG) !== false && $title != "") {
 			$lang = WIKTIONARY_LANG;
         } elseif (strpos($buffer, "{{") !== false && $title != "") {
         	$state = "";
         } else {
-        	if ($state == "bedeutungen") {
+        	if ($state == "definiciones") {
         		$buffer = clean($buffer);
         		array_push($meanings, $buffer);
-        	} elseif ($state == "synonyme") {
+        	} elseif ($state == "sinonimo") {
         		$buffer = clean($buffer);
-        		if (preg_match("/[a-zA-Z�������]+/", $buffer)) {
+        		if (preg_match("/[a-zA-Z]+/", $buffer)) {
         			array_push($synonyms, $buffer);
         		} else {
         			#print "empty: $buffer<br>\n";
