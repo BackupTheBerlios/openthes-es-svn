@@ -22,15 +22,15 @@ if( $queryterm != "" ) {
 	$db->query($query);
 	$match = $db->next_record();
 	$wikiword = $db->f('headword');
-	$wikilink = "http://de.wiktionary.org/w/index.php?title=".urlencode($wikiword);
-	$wikilink_history = "http://de.wiktionary.org/w/index.php?title=".urlencode($wikiword)."&amp;action=history";
-	$wikilink_edit = "http://de.wiktionary.org/w/index.php?title=".urlencode($wikiword)."&amp;action=edit";
+	$wikilink = "http://es.wiktionary.org/w/index.php?title=".urlencode($wikiword);
+	$wikilink_history = "http://es.wiktionary.org/w/index.php?title=".urlencode($wikiword)."&amp;action=history";
+	$wikilink_edit = "http://es.wiktionary.org/w/index.php?title=".urlencode($wikiword)."&amp;action=edit";
 	#$wikiword = iconv("utf8", "latin1", $wikiword);
 	if (!$match) {
-		$wikilink = "http://de.wiktionary.org/";
+		$wikilink = "http://es.wiktionary.org/";
 	}
 	?>
-	<p class="compact"><strong><a href="http://de.wiktionary.org">Wiktionary</a></strong>:</p>
+	<p class="compact"><strong><a href="http://es.wiktionary.org">Wiktionary</a></strong>:</p>
 	<ul class="compact">
 	<?php
 	if ($match) {
