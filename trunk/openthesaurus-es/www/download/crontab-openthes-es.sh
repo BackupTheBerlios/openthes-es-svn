@@ -23,3 +23,6 @@ cd ../OOo2-Thesaurus
 tar -cjf OOo2-thes_es_ES.tar.bz2 th_es_ES_v2.idx th_es_ES_v2.dat README_th_es_ES_v2.txt COPYING
 mv OOo2-thes_es_ES.tar.bz2 ../download/
 
+### OOo2
+w3m -dump http://openthes-es.berlios.de/admin/ooo_oxt_export.php > ~/ooo_oxt_export.log
+

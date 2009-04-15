@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<description xmlns="http://openoffice.org/extensions/description/2006" xmlns:d="http://openoffice.org/extensions/description/2006"  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <version value="#YYYY.MM.DD#" />
+    <identifier value="openthes-es.berlios.de" />
+    <display-name>
+        <name lang="en">OpenThesaurus-es - Spanish thesaurus and hyphenator</name>
+		<name lang="es">OpenThesaurus-es - Separdor silábico y Tesauro en español</name>
+    </display-name>
+    <platform value="all" />
+    <dependencies>
+        <OpenOffice.org-minimal-version value="3.0" d:name="OpenOffice.org 3.0" />
+    </dependencies>
+    <registration>
+        <simple-license  accept-by="admin" default-license-id="en" suppress-on-update="true" >
+            <license-text xlink:href="COPYING" lang="en" license-id="en" />
+	</simple-license>
+    </registration>
+	<!-- TODO !!!
+    <update-information>
+        <src xlink:href="http://openthes-es.berlios.de/package.update/openthes-es.xml" />
+    </update-information>
+	-->
+	<publisher>
+    <name xlink:href="http://openthes-es.berlios.de" lang="es">openthes-es.berlios.de</name>
+    </publisher>
+</description>
+

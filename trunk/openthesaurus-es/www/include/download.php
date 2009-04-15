@@ -1,4 +1,17 @@
 	<?php
+	$filename = TARGET_DOWNLOAD_DIR . TARGET_OOO3;
+	$fp = fopen($filename, "r");
+	$s_array = fstat($fp);
+	fclose($fp);
+	$date = date(TIMEFORMAT_SHORT, $s_array["mtime"]);
+	$size = sprintf("%.0f", $s_array["size"]/1000);
+	?>
+	<a href="<?php print BASE_URL . "/download/" . TARGET_OOO3 ?>"><?php print T_("OpenOffice.org 3.x Dictionaries (Sinónimos y separaciones") ?></a>
+	(<?php print $size ?> KB, 
+	<?php print $date ?>)
+	<br />
+
+    <?php
 	$filename = TARGET_DOWNLOAD_DIR . TARGET_OOO2;
 	$fp = fopen($filename, "r");
 	$s_array = fstat($fp);

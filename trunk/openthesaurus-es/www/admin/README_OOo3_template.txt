@@ -1,7 +1,7 @@
-OpenThesaurus - Separación silábica y Tesauro Español - Versión para OpenOffice.org
+OpenThesaurus - Tesauro Español Versión para OpenOffice.org
 Marcelo Garrone (mgarrone at users.sf.net)
 Snapshot, generado automáticamente: #YYYY-MM-DD# #HH:MM#
-Homepage: http://openthes-es.berlios.de
+Homepage: http://openoffice-es.sf.net/thesaurus/
 
 Requisitos: ==========================================================
 
@@ -11,7 +11,7 @@ Requisitos: ==========================================================
 Nota: ================================================================
     
     * Se asume que OOo está bien instalado.
-    * El diccionario de sinónimos y separación silábica es el mismo para Windows como para Linux.
+    * El diccionario de sinónimos es el mismo para Windows como para Linux.
 
 Instalación: =========================================================
 

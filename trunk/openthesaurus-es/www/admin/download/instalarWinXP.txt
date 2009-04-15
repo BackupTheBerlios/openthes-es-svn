@@ -1,0 +1,87 @@
+
+INSTALACION DEL TESAURO "OpenThesaurus-es" EN EL SISTEMA WINDOWS XP - HOME EDITION,
+USANDO OpenOffice.org - Versión: 2.3.0 Y SU TRADUCCION AL ESPAÑOL
+(http://openoffice.he.net/localized/es/2.3.0/OOo_2.3.0_Win32Intel_langpack_es.exe)
+
+***********************************************************************************
+
+1) Cerrar todas las aplicaciones de OpenOffice.org, incluyendo
+   el "Inicio rápido" (Quickstarter) ubicado en la bandeja 
+   de Windows (barra inferior)
+
+2) Descomprimir el archivo "OOo2-thes_es_ES.tar.bz2" con, por ejemplo,
+   el paquete 7-Zip (http://www.7-zip.org/).
+
+3) Copiar los archivos "th_es_ES_v2.idx" y "th_es_ES_v2.dat"
+   al subdirectorio correspondiente de OpenOffice.org. Por ejemplo: 
+
+   C:\Archivos de programa\OpenOffice.org 2.3\share\dict\ooo
+
+4) Renombrar dichos archivos de manera que coincidan con el español que 
+   habla la usuaria/usuario. Es decir, Español de Argentina, Español de Chile, etc.
+   (si se habla el Español de España, los archivos NO deben ser renombrados).
+
+   Por ejemplo, si se elige el español de México, los archivos renombrados
+   quedarían como sigue: 
+
+        th_es_MX_v2.idx 
+        th_es_MX_v2.dat
+
+5) Editar el archivo "dictionary.lst" ubicado en el subdirectorio referido
+   y agregar la siguiente línea, al final del mismo:
+
+        THES es MX th_es_MX_v2
+
+   Si se elige el Español de otro país, deben colocarse las
+   siglas correspondientes: AR para Argentina, ES para España, etc.
+
+5) Abrir "Writer".
+
+6) Ir al menú |Herramientas|Opciones|Configuración de idioma|Idiomas|
+
+7) Seleccionar el idioma español que se esté utilizando
+   -por ejemplo, "Español (Mexico)"- en las opciones "Esquema local"
+   "Moneda predeterminada" y "Occidental"
+
+8) Dar clic en "Aceptar".
+
+9) Ir al menú |Herramientas|Opciones|Configuración de idioma|Lingüística|
+
+10) En "Módulos disponibles de idioma", seleccionar la primera opción y
+    dar clic en "Editar".
+
+11) En "Idioma", seleccionar el idioma español que se 
+    esté utilizando. Por ejemplo: "Español (Mexico)".
+
+12) Dar clic en "Cerrar".
+
+13) Dar clic en "Aceptar".
+
+14) Para comprobar que "OpenThesaurus-es" fue correctamente instalado, abrir un 
+    documento nuevo de Writer, escribir una palabra en español,
+    sombrearla y luego seleccionar la opción |Herramientas|Idioma|Sinónimos|
+    (alternativamente pueden presionarse las teclas "Ctrl F7").
+
+15) Debe aparecer una ventana con los sinónimos sugeridos.
+
+========================================================================
+
+NOTAS IMPORTANTES:
+
+* Si lo anterior no resulta, copiar los archivos "th_es_ES_v2.idx" 
+   y "th_es_ES_v2.dat" en la siguiente ruta:
+
+   C:\Documents and Settings\David\Datos de programa\OpenOffice.org2\user\wordbook
+
+* Si se elije un español distinto al del ejemplo, como el
+  "Español (Argentina)", los archivos renombrados quedarán como sigue:
+
+        th_es_AR_v2.idx 
+        th_es_AR_v2.dat
+
+  En este caso, la línea a agregar en el archivo "dictionary.lst" será:
+
+        THES es AR th_es_AR_v2
+
+* Si se elige la opción "Spanish (Spain)", LOS ARCHIVOS NO DEBEN SER RENOMBRADOS.
+

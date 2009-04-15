@@ -104,6 +104,7 @@ define('TARGET_KWORD', "Kword_thesaurus_es_ES.txt");
 define('TARGET_TEXT', "Thesaurus_es_ES.txt");
 define('TARGET_OOO', "OOo-thes_es_ES.tar.bz2");
 define('TARGET_OOO2', "OOo2-thes_es_ES.tar.bz2");
+define('TARGET_OOO3', "Spanish-Dictionaries.oxt");
 define('TARGET_SOURCE', "openthesaurus-es_src.tar.bz2");
 
 define('HIDDEN_SYNSETS', "-1");

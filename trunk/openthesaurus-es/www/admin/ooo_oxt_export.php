@@ -4,32 +4,33 @@
 # Export of a thesaurus in OpenOffice.org 3.x format (.oxt)
 #
 
-if( ! (getenv('REMOTE_ADDR') == getenv('SERVER_ADDR')) ) {
-	print "Access from your host is denied.";
-	return;
-}
+// if( ! (getenv('REMOTE_ADDR') == getenv('SERVER_ADDR')) ) {
+//	print "Access from your host is denied.";
+//	return;
+// }
 
 #### Configuration ###
-$lang = "de";		// language of the thesaurus data
-$lang2 = "DE";		// second part of "de_DE"
-$target_name = "Deutscher-Thesaurus";	// resulting file will be called like this, ".oxt" will be appended automatically
+$lang = "es";		// language of the thesaurus data
+$lang2 = "ES";		// second part of "de_DE"
+$target_name = "Spanish-Dictionaries";	// resulting file will be called like this, ".oxt" will be appended automatically
 $zip_command = "/usr/bin/zip";
 #### End of configuration ###
 
 $lang_code = $lang."_".$lang2;
 
-include("../../include/phplib/prepend2.php3");
-include("../../include/tool.php");
+include("../include/phplib/prepend2.php3");
+include("../include/tool.php");
 
 $title = "OpenThesaurus admin interface: Build OOo 3.x thesaurus files";
-include("../../include/top.php");
+//include("../include/top.php");
 
-print strftime("%H:%M:%S")." -- Starting OpenOffice.org 3.x export ...<br />\n";
+// print strftime("%H:%M:%S")." -- Starting OpenOffice.org 3.x export ...<br />\n";
 
 // Load the REAMDE template, insert current date and save in folder
 // that's going to be zipped:
+
 $readme_template = "README_OOo3_template";
-$readme_target = "../OOo2-Thesaurus/README_th_$lang_code.txt";
+$readme_target = "../OOo2-Thesaurus/README_th_".$lang_code.".txt";
 
 $readme_fh = fopen($readme_template, 'r');
 if(!$readme_fh) {
@@ -40,7 +41,7 @@ $readme = fread($readme_fh, filesize($readme_template));
 $readme = str_replace("#YYYY-MM-DD#", date("Y-m-d"), $readme);
 $readme = str_replace("#HH:MM#", date("H:i"), $readme);
 $readme = str_replace("#LANG#", $lang, $readme);
-$readme = str_replace("#YYYY#", date("Y"), $readme);
+// $readme = str_replace("#YYYY#", date("Y"), $readme);
 fclose($readme_fh);
 
 $readme_fh = fopen($readme_target, 'w');
@@ -56,6 +57,8 @@ $description_template_file = "description_template.xml";
 $description_file = "description.xml";
 $description_target = "../OOo2-Thesaurus/$description_file";
 $dictionaries_file = "Dictionaries.xcu";
+$hyph = "hyph_es_ES.dic";
+$COPYING = "COPYING";
 $manifest_file = "META-INF/manifest.xml";
 
 // read description template, replace variables and save under different name:
@@ -86,8 +89,8 @@ if (!chdir("../OOo2-Thesaurus")) {
 	print "Could not change to directory ../OOo2-Thesaurus\n";
 	return;
 }
-$zip = "$zip_command ".$target." th_".$lang_code."_v2.idx th_".$lang_code."_v2.dat README_th_".
-	$lang_code.".txt ".$description_file." ".$dictionaries_file." ".$manifest_file;
+$zip = "$zip_command ".$target." ".$hyph." ".$COPYING." th_".$lang_code."_v2.idx th_".$lang_code."_v2.dat README_th_".$lang_code.".txt ".$description_file." ".$dictionaries_file." ".$manifest_file;
+// $zip = "$zip_command ".$target." ".$COPYING;
 print "$zip\n"; flush();
 
 if(!system($zip)) {
