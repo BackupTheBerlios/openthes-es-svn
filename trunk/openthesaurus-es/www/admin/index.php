@@ -59,6 +59,7 @@ $db->query($query);
 		
 		<a href="ooo_export.php">Build OpenOffice.org thesaurus</a><br />
 		<a href="ooo_new_export.php">Build OpenOffice.org 2.0 thesaurus</a><br />
+		<a href="ooo_oxt_export.php">Build OpenOffice.org 3.0 thesaurus y hyphenation</a><br />
 		<a href="text_export.php">Build text thesaurus</a><br />
 		<a href="kword_export.php">Build KWord thesaurus</a><br />
 		<a href="text_list_export.php">Build text list for spell checking</a><br />
